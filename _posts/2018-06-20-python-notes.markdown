@@ -131,3 +131,39 @@ categories: python
    ```
 
 10. The `int` function can also be used to convert an integer string into an integer. For example, `int("34")` returns 34. So you can use the `eval` or `int` function to convert a string into an integer. Which one is better? The `int` function performs a simple conversion. It does not work for a non-integer string. For example, `int("3.4")` will cause an error. The `eval` function does more than a simple conversion. It can be used to evaluate an expression. For example, `eval("3 + 4")` returns 7. However, there is a subtle “gotcha” for using the `eval` function. The `eval` function will produce an error for a numeric string that contains leading zeros. In contrast, the `int` function works fine for this case. For example, `eval("003")` causes an error, but `int("003")` returns 3.
+
+
+
+## Chapter 2 Mathematical Functions,Strings, And Objects
+
+1. Simple Python Built-in Functions
+
+   | Function         | Description                                                  | Example                                                 |
+   | ---------------- | ------------------------------------------------------------ | ------------------------------------------------------- |
+   | abs(x)           | Returns the absolute value for x.                            | abs(-2) is 2                                            |
+   | max(x1, x2, ...) | Returns the largest among x1, x2, ...                        | max(1, 5, 2) is 5                                       |
+   | min(x1, x2, ...) | Returns the smallest among x1, x2, ...                       | min(1, 5, 2) is 1                                       |
+   | pow(a, b)        | Returns a<sup>b</sup>. Same as a**b                          | pow(2, 3) is 8                                          |
+   | round(x)         | Returns an integer nearest to x. If x is equally close to two integers, the even one is returned. | round(5.4) is 5<br/>round(5.5) is 6<br/>round(4.5) is 4 |
+   | round(x, n)      | Returns the float value rounded to n digits after the decimal point. | round(5.466, 2) is 5.47<br/>round(5.463, 2)is 5.46      |
+
+2. The Python `math` module provides the mathematical functions. For example,
+
+   ```python
+   import math # import math module to use the math functions
+   
+   # Test algebraic functions
+   print("exp(1.0) =", math.exp(1))
+   print("log(2.78) =", math.log(math.e)) 
+   print("log10(10, 10) =", math.log(10,10))
+   print("sqrt(4.0) =", math.sqrt(4.0))
+   
+   # Test trigonometric functions
+   print("sin(PI / 2) =", math.sin(math.pi/2))
+   print("cos(PI / 2) =", math.cos(math.pi/2))
+   print("tan(PI / 2) =", math.tan(math.pi/2))
+   print("degrees(1.57) =", math.degrees(1.57))
+   print("radians(90) =", math.radians(90)) 
+   ```
+
+   
