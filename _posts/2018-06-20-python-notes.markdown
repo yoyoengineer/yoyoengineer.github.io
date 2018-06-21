@@ -489,16 +489,16 @@ categories: python
 
    ```python
    if boolean-expression:
-   statement(s) # Note that the statement(s) must be indented
+       statement(s) # Note that the statement(s) must be indented
    ```
 
 4. Two-Way if-else Statements
 
    ```python
    if boolean-expression: 
-   statement(s)-for-the-true-case
+       statement(s)-for-the-true-case
    else: 
-   statement(s)-for-the-false-case
+       statement(s)-for-the-false-case
    ```
 
 5. Nested if and Multi-Way if-elif-else Statements
