@@ -453,4 +453,109 @@ categories: python
     | "<10.2f"  | Left-justify the formatted item.                             |
     | ">10.2f"  | Right-justify the formatted item.                            |
 
-    
+
+
+## Chapter 3 Selections
+
+1. To generate a random number, you can use the **randint(a, b)** function in the **random** module. This function returns a random integer **i** between **a** and **b**, inclusively.
+
+   ```python
+   import random 
+   
+   # Generate random numbers
+   number1 = random.randint(0, 9)
+   ```
+
+2. Python also provides another function, **randrange(a, b)**, for generating a random integer between **a** and **b – 1**, which is equivalent to **randint(a, b – 1)**. For example, **randrange(0, 10)** and **randint(0, 9)** are the same.
+
+   You can also use the random()function to generate a random float rsuch that 0 <= r < 1.0. For example,
+
+   ```python
+   >>> import random
+   >>> random.random()
+   0.34343
+   >>> random.random()
+   0.20119
+   >>> random.randint(0, 1)
+   0
+   >>> random.randint(0, 1)
+   1
+   >>> random.randrange(0, 1) # This will always be 0
+   0
+   >>>
+   ```
+
+3. if Statements
+
+   ```python
+   if boolean-expression:
+   statement(s) # Note that the statement(s) must be indented
+   ```
+
+4. Two-Way if-else Statements
+
+   ```python
+   if boolean-expression: 
+   statement(s)-for-the-true-case
+   else: 
+   statement(s)-for-the-false-case
+   ```
+
+5. Nested if and Multi-Way if-elif-else Statements
+
+   ```python
+   if score >= 90.0:
+       grade = 'A'
+   else:
+       if score >= 80.0:
+           grade = 'B'
+       else:
+           if score >= 70.0:
+               grade = 'C'
+           else:
+               if score >=60.0:
+                   grade = 'D'
+               else:
+                   grade = 'F'
+   ```
+
+   Equivalent
+
+   ```python
+   if score >= 90.0:
+       grade = 'A'
+   elif score >= 80.0:
+       grade = 'B'
+   elif score >= 70.0:
+       grade = 'C'
+   elif score >=60.0:
+       grade = 'D'
+   else:
+       grade = 'F'
+   ```
+
+6. Boolean Operators
+
+   | Operator | Description         |
+   | -------- | ------------------- |
+   | not      | logical negation    |
+   | and      | logical conjunction |
+   | or       | logical disjunction |
+
+   For example,
+
+   ```python
+   # Receive an input
+   number = eval(input("Enter an integer: "))
+   
+   if number % 2 == 0 and number % 3 == 0: 
+       print(number, "is divisible by 2 and 3")
+   if (number % 2 == 0 or number % 3 == 0): 
+       print(number, "is divisible by 2 or 3")
+   
+   if (number % 2 == 0 or number % 3 == 0) and \
+   not (number % 2 == 0 and number % 3 == 0):
+       print(number, "is divisible by 2 or 3, but not both")
+   ```
+
+   
