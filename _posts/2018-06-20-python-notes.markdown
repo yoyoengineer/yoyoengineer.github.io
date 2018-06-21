@@ -305,10 +305,10 @@ categories: python
 
     ```python
     >>> s = "Welcome"
-    >>> s1 =  # Invoke the lower method
+    >>> s1 = s.lower() # Invoke the lower method
     >>> s1 
     'welcome'
-    >>> s2 =  # Invoke the upper method
+    >>> s2 = s.upper() # Invoke the upper method
     >>> s2
     'WELCOME'
     >>>
@@ -318,7 +318,7 @@ categories: python
 
     ```python
     >>> s = "\t Welcome \n"
-    >>> s1 =  # Invoke the strip method
+    >>> s1 = s.strip() # Invoke the strip method
     >>> s1
     'Welcome'
     >>>
