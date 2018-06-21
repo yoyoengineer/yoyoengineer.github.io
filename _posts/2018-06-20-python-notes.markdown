@@ -166,4 +166,291 @@ categories: python
    print("radians(90) =", math.radians(90)) 
    ```
 
-   
+3. A string is a sequence of characters and can include text and numbers. String values must be enclosed in matching single quotes(') or double quotes("). Python does not have a data type for characters. A single-character string represents a character. For example,
+
+   ```python
+   letter = 'A' # Same as letter = "A"
+   numChar = '4' # Same as numChar = "4"
+   message = "Good morning" # Same as message = 'Good morning'
+   ```
+
+4. ASCII Code
+
+   Computers use binary numbers internally (see Section 1.2.2). A character is stored in a computer as a sequence of 0s and 1s. Mapping a character to its binary representation is called character encoding. There are different ways to encode a character. The manner in which characters are encoded is defined by an encoding scheme. One popular standard is ASCII (American Standard Code for Information Interchange), a 7-bit encoding scheme for representing all uppercase and lowercase letters, digits, punctuation marks, and control characters. ASCII uses numbers 0 through 127 to represent characters. 
+
+5. Unicode Code
+
+   Python also supports Unicode. Unicode is an encoding scheme for representing international characters. ASCII is a small subset of Unicode. Unicode was established by the Unicode Consortium to support the interchange, processing, and display of written texts in the world’s diverse languages. A Unicode starts with \u, followed by four hexadecimal digits that run from \u0000to \uFFFF. (For information on hexadecimal numbers, see Appendix C.) For example, the word “welcome” is translated into Chinese using two characters,  and  . The Unicode representations of these two characters are \u6B22\u8FCE.
+
+6. The **ord** and **chr** Functions
+
+   Python provides the `ord(ch)` function for returning the ASCII code for the character `ch` and the `chr(code)` function for returning the character represented by the code. For example,
+
+   ```python
+   >>> ch = 'a'
+   >>> ord(ch)
+   97
+   >>> chr(98)
+   'b'
+   >>> ord('A')
+   65
+   >>>
+   ```
+
+7. When you use the `print` function, it automatically prints a linefeed (\n) to cause the output to advance to the next line. If you don’t want this to happen after the `print` function is finished, you can invoke the `print` function by passing a special argument end = "anyendingstring" using the following syntax:
+
+   ```python
+   print(item, end = "anyendingstring")
+   ```
+
+   For example, the following code 
+
+   ```python
+   print("AAA", end = ' ')
+   print("BBB", end = '')
+   print("CCC", end = '***')
+   print("DDD", end = '***')
+   ```
+
+   displays
+
+   ```
+   AAA BBBCCC***DDD***
+   ```
+
+   You can also use the `end` argument for printing multiple items using the following syntax:
+
+   ```python
+   print(item1, item2, ..., end = "anyendingstring")
+   ```
+
+   For example,
+
+   ```python
+   radius = 3
+   print("The area is", radius * radius * math.pi, end = ' ')
+   print("and the perimeter is", 2* radius)
+   ```
+
+   displays
+
+   ```
+   The area is 28.26 and the perimeter is 6
+   ```
+
+8. The **str** Function
+
+   The `str` function can be used to convert a number into a string. For example,
+
+   ```python
+   >>> s = str(3.4) # Convert a float to string
+   >>> s 
+   '3.4'
+   ```
+
+9. The String Concatenation Operator
+
+   The +operator can be used to concatenate two strings. Here are some examples:
+
+   ```python
+   >>> message = "Welcome " + "to " + "Python"
+   >>> message 
+   'Welcome to Python'
+   >>> chapterNo = 3
+   >>> s = "Chapter " + str(chapterNo)
+   >>> s
+   'Chapter 3'
+   >>>
+   ```
+
+   The augmented assignment +=operator can also be used for string concatenation. For example,
+
+   ```python
+   >>> message = "Welcome to Python"
+   >>> message 
+   'Welcome to Python'
+   >>> message += " and Python is fun"
+   >>> message
+   'Welcome to Python and Python is fun'
+   >>>
+   ```
+
+10. In Python, a number is an object, a string is an object, and every datum is an object. Objects of the same kind have the same type. You can use the `id` function and `type` function to get these pieces of information about an object. For example,
+
+   ```python
+   >>> n = 3 # n is an integer
+   >>> id(n)
+   505408904
+   >>> type(n)
+   <class 'int'> 
+   >>> f = 3.0 # f is a float
+   >>> id(f)
+   26647120
+   >>> type(f)
+   <class 'float'>
+   >>> s = "Welcome" # s is a string
+   >>> id(s)
+   36201472
+   >>> type(s)
+   <class 'str'>
+   >>>
+   ```
+
+   The id for the object is automatically assigned a unique integer by Python when the program is executed. The id for the object will not be changed during the execution of the program. However, Python may assign a different id every time the program is executed. The type for the object is determined by Python according to the value of the object. Line 2 displays the id for a number object n, line 3 shows the id Python has assigned for the object, and its type is displayed in line 4. 
+
+   In Python, an object’s type is defined by a class. For example, the class for string is `str`(line 15), for integer is `int`(line 5), and for float is float(line 10).
+
+11. Line 2 invokes s.lower()on object s to return a new string in lowercase and assigns it to s1.
+    Line 5 invokes s.upper()on object s to return a new string in uppercase and assigns it to s2.
+
+    ```python
+    >>> s = "Welcome"
+    >>> s1 =  # Invoke the lower method
+    >>> s1 
+    'welcome'
+    >>> s2 =  # Invoke the upper method
+    >>> s2
+    'WELCOME'
+    >>>
+    ```
+
+    Another useful string method is strip(), which can be used to remove (strip) the whitespace characters from both ends of a string. The characters ' ', \t, \f, \r, and \n are known as the whitespace characters.
+
+    ```python
+    >>> s = "\t Welcome \n"
+    >>> s1 =  # Invoke the strip method
+    >>> s1
+    'Welcome'
+    >>>
+    ```
+
+12. Formatting Floating-Point Numbers
+
+    If the item is a float value, you can use the specifier to give the width and precision of the format in the form of ***width.precisionf***. Here, ***width*** specifies the width of the resulting string, ***precision*** specifies the number of digits after the decimal point, and **f** is called the *conversion code*, which sets the formatting for floating point numbers. For example, 
+
+    ![format](/assets/img/posts/python_notes/format.png)
+
+    ```python
+    print(format(57.467657,"10.2f"))
+    print(format(12345678.923,"10.2f"))
+    print(format(57.4,"10.2f"))
+    print(format(57,"10.2f"))
+    ```
+
+    displays
+
+    ![format](/assets/img/posts/python_notes/floating_format_display.png)
+
+    where a square box (口) denotes a blank space. Note that the decimal point is counted as one space.
+
+    The format("10.2f")function formats the number into a string whose width is 10, including a decimal point and two digits after the point. The number is rounded to two decimal places. Thus there are seven digits allocated before the decimal point. If there are fewer than seven digits before the decimal point, spaces are inserted before the number. If there are more than seven digits before the decimal point, the number’s width is automatically increased. For example, format(12345678.923, "10.2f") returns 12345678.92, which has a width of 11.
+    You can omit the width specifier. If so, it defaults to 0. In this case, the width is automatically set to the size needed for formatting the number. For example,
+
+    ```python
+    print(format(57.467657, "10.2f"))
+    print(format(57.467657, ".2f"))
+    ```
+
+    displays
+
+    ![format](/assets/img/posts/python_notes/floating_format_display1.png)
+
+13. Formatting in Scientific Notation
+
+    If you change the conversion code from **f** to **e**, the number will be formatted in scientific
+    notation. For example,
+
+    ```python
+    print(format(57.467657, "10.2e"))
+    print(format(0.0033923, "10.2e"))
+    print(format(57.4, "10.2e"))
+    print(format(57, "10.2e"))
+    ```
+
+    displays
+
+    ![format](/assets/img/posts/python_notes/scientific_format_display.png)
+
+    The **+** and **-** signs are counted as places in the width limit.
+
+14. Formatting as a Percentage
+
+    You can use the conversion code **%** to format a number as a percentage. For example,
+
+    ```python
+    print(format(0.53457, "10.2%"))
+    print(format(0.0033923, "10.2%"))
+    print(format(7.4, "10.2%"))
+    print(format(57, "10.2%"))
+    ```
+
+    displays
+
+    ![format](/assets/img/posts/python_notes/percentage_format_display.png)
+
+    The format 10.2%causes the number to be multiplied by 100 and displayed with a **%** sign following it. The total width includes the %sign counted as one space.
+
+15. Justifying Format 
+
+    By default, the format of a number is right justified. You can put the symbol <in the format specifier to specify that the item be left-justified in the resulting format within the specified width. For example,
+
+    ```python
+    print(format(57.467657, "10.2f"))
+    print(format(57.467657, "<10.2f”))
+    ```
+
+    displays
+
+    ![format](/assets/img/posts/python_notes/percentage_format_display.png)
+
+16. Formatting Integers
+
+    The conversion codes **d**, **x**, **o**, and **b** can be used to format an integer in decimal, hexadecimal,
+    octal, or binary. You can specify a width for the conversion. For example,
+
+    ```python
+    print(format(59832, "10d"))
+    print(format(59832, "<10d"))
+    print(format(59832, "10x"))
+    print(format(59832, "<10x"))
+    ```
+
+    displays
+
+    ![format](/assets/img/posts/python_notes/integer_format_display.png)
+
+    The format specifier **10d** specifies that the integer is formatted into a decimal with a width of ten spaces. The format specifier **10x** specifies that the integer is formatted into a hexadecimal integer with a width of ten spaces.
+
+17. Formatting Strings
+
+    You can use the conversion code **s** to format a string with a specified width. For example,
+
+    ```python
+    print(format("Welcome to Python", "20s"))
+    print(format("Welcome to Python", "<20s"))
+    print(format("Welcome to Python", ">20s"))
+    print(format("Welcome to Python and Java", ">20s"))
+    ```
+
+    displays
+
+    ![format](/assets/img/posts/python_notes/string_format_display.png)
+
+    The format specifier **20s** specifies that the string is formatted within a width of 20. By default, a string is left justified. To right-justify it, put the symbol >in the format specifier. If the string is longer than the specified width, the width is automatically increased to fit the string.
+
+18. Frequently Used Specifiers
+
+    | Specifier | Format                                                       |
+    | --------- | ------------------------------------------------------------ |
+    | "10.2f"   | Format the float item with width 10 and precision 2.         |
+    | "10.2e"   | Format the float item in scientific notation with width 10 and precision 2. |
+    | "5d"      | Format the integer item in decimal with width 5.             |
+    | "5x"      | Format the integer item in hexadecimal with width 5.         |
+    | "5o"      | Format the integer item in octal with width 5.               |
+    | "5b"      | Format the integer item in binary with width 5.              |
+    | "10.2%"   | Format the number in decimal.                                |
+    | "50s"     | Format the string item with width 50.                        |
+    | "<10.2f"  | Left-justify the formatted item.                             |
+    | ">10.2f"  | Right-justify the formatted item.                            |
+
+    
