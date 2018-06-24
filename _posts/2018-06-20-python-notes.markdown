@@ -712,4 +712,4 @@ categories: python
 
    Invoking **max(i, j)** passes the values **i** and **j** to parameters **num1** and **num2** in the **max** function. So now **num1** and **num2** reference **int** objects **5** and **2**. The **max** function finds the maximum number and assigns it to **result**, so  **result** now references **int** object **5**. The result is returned to the **main** function and assigned to variable **k**. Now **k** references **int** object 5. After the **main** function is finished, the stack is empty. The objects in the heap are automatically destroyed by the Python interpreter when they are no longer needed.
 
-   ![call_stack0](/assets/img/posts/python_notes/call_stack0.png)![call_stack1](/assets/img/posts/python_notes/call_stack1.png)![call_stack2](/assets/img/posts/python_notes/call_stack2.png)
+   ![call_stack0](/assets/img/posts/python_notes/call_stack0.PNG)![call_stack1](/assets/img/posts/python_notes/call_stack1.PNG)![call_stack2](/assets/img/posts/python_notes/call_stack2.PNG)
