@@ -250,7 +250,7 @@ categories: python
 
 9. The String Concatenation Operator
 
-   The +operator can be used to concatenate two strings. Here are some examples:
+   The + operator can be used to concatenate two strings. Here are some examples:
 
    ```python
    >>> message = "Welcome " + "to " + "Python"
@@ -263,7 +263,7 @@ categories: python
    >>>
    ```
 
-   The augmented assignment +=operator can also be used for string concatenation. For example,
+   The augmented assignment += operator can also be used for string concatenation. For example,
 
    ```python
    >>> message = "Welcome to Python"
@@ -556,6 +556,137 @@ categories: python
    if (number % 2 == 0 or number % 3 == 0) and \
    not (number % 2 == 0 and number % 3 == 0):
        print(number, "is divisible by 2 or 3, but not both")
+   ```
+
+
+
+## Chapter 4 Loops
+
+1. The while Loop
+
+   ```python
+   while loop-continuation-condition: 
+       # Loop body
+       Statement(s)
+   ```
+
+2. if you have a lot of data to enter, it would be cumbersome to type all the entries from the keyboard. You can store the data in a text file (named input.txt, for example) and run the program by using the following command:
+
+   
+
+   ```python
+   python SentinelValue.py < input.txt
+   ```
+
+   This command is called *input redirection*. 
+
+   Suppose the file contains the following numbers, one number per line:
+
+   ```
+   2
+   3 
+   4 
+   0
+   
+   ```
+
+   SentinelValue.py:
+
+   ```python
+   number = eval(input("Enter an integer: "))
+   max = number
+   while number != 0:
+       number = eval(input("Enter an integer: "))
+       if number > max:
+           max = number
+   print("max is", max)
+   print("number", number)
+   ```
+
+   The program should get sum to be 9.
+
+   Similarly, *output redirection* can send the output to a file instead of displaying it on the
+   screen. The command for output redirection is:
+
+   ```python
+   python Script.py > output.txt
+   ```
+
+   Input and output redirection can be used in the same command. For example, the following command gets input from input.txt and sends output to output.txt:
+
+   ```python
+   python SentinelValue.py < input.txt > output.txt
+   ```
+
+   Run the program and we can see result show up in output.txt.
+
+   ![output](/assets/img/posts/python_notes/output.png)
+
+3. The for Loop
+
+   ```python
+   i = initialValue # Initialize loop-control variable
+   while i < endValue: 
+       # Loop body
+       ...
+       i += 1 # Adjust loop-control variable
+   ```
+
+   A `for` loop can be used to simplify the preceding loop:
+
+   ```python
+   for i in range(initialValue, endValue): 
+       # Loop body
+   ```
+
+   In general, the syntax of a `for` loop is:
+
+   ```python
+   for var in sequence: 
+       # Loop body
+   ```
+
+   A sequence holds multiple items of data, stored one after the other. Later in the book, we will introduce strings, lists, and tuples. They are sequence-type objects in Python. The variable **var** takes on each successive value in the sequence, and the statements in the body of the
+   loop are executed once for each value. 
+   The function **range(a, b)** returns the sequence of integers **a**, **a + 1**, ..., **b - 2**, and **b -1**. For example,
+
+   ```python
+   >>> for v in range(4, 8):
+   ...     print(v)
+   ...
+   4
+   5
+   6
+   7
+   >>>
+   ```
+
+   The **range** function has two more versions. You can also use **range(a)** or **range(a, b, k)**. **range(a)** is the same as **range(0, a)**. **k** is used as *step value* in **range(a, b, k)**. The first number in the sequence is **a**. Each successive number in the sequence will increase by the step value k. b is the limit. The last number in the sequence must be less than **b**. For example,
+
+   ```python
+   >>> for v in range(3, 9, 2):
+   ...     print(v)
+   ...
+   3
+   5
+   7
+   >>>
+   ```
+
+   The step value in **range (3, 9, 2)** is **2**, and the limit is **9**. So, the sequence is **3**, **5**, and **7**. 
+   The **range(a, b, k)** function can count backward if **k** is negative. In this case, the
+   sequence is still **a**, **a + k**,  **a + 2k**, and so on for a negative **k**. The last number in the
+   sequence must be greater than **b**. For example,
+
+   ```python
+   >>> for v in range(5, 1, -1):
+   ...     print(v)
+   ...
+   5
+   4
+   3
+   2
+   >>>
    ```
 
    
