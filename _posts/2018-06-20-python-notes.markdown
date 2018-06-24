@@ -689,4 +689,27 @@ categories: python
    >>>
    ```
 
-   
+
+
+## Chapter 5 Functions
+
+1. Defining a Function
+
+   The syntax for defining a function is as follows:
+
+   ```python
+   def functionName(list of parameters)
+       # Function body
+   ```
+
+2. Call Stacks
+
+   Each time a function is invoked, the system creates an *activation record* that stores its arguments and variables for the function and places the activation record in an area of memory known as a call stack. A call stack is also known as an execution stack, runtime stack, or machine stack, and is often shortened to just “the stack.” When a function calls another function, the caller’s activation record is kept intact and a new activation record is created for the new function call. When a function finishes its work and returns control to its caller, its activation record is removed from the call stack.
+
+   A call stack stores the activation records in a last-in, first-out fashion. The activation record for the function that is invoked last is removed first from the stack. Suppose function **m1** calls function **m2**, and then **m3**. The runtime system pushes **m1**’s activation record into the stack, then **m2**’s, and then **m3**’s. After **m3** is finished, its activation record is removed from the stack. After **m2** is finished, its activation record is removed from the stack. After **m1** is finished, its activation record is removed from the stack.
+
+   Understanding call stacks helps us comprehend how functions are invoked. When the **main** function is invoked, an activation record is created to store variables **i** and **j**. Remember that all data in Python are objects. Python creates and stores objects in a separate memory space called heap. Variables **i** and **j** actually contain reference values to **int** objects **5** and **2**.
+
+   Invoking **max(i, j)** passes the values **i** and **j** to parameters **num1** and **num2** in the **max** function. So now **num1** and **num2** reference **int** objects **5** and **2**. The **max** function finds the maximum number and assigns it to **result**, so  **result** now references **int** object **5**. The result is returned to the **main** function and assigned to variable **k**. Now **k** references **int** object 5. After the **main** function is finished, the stack is empty. The objects in the heap are automatically destroyed by the Python interpreter when they are no longer needed.
+
+   ![call_stack0](/assets/img/posts/python_notes/call_stack0.png)![call_stack1](/assets/img/posts/python_notes/call_stack1.png)![call_stack2](/assets/img/posts/python_notes/call_stack2.png)
