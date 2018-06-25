@@ -713,3 +713,188 @@ categories: python
    Invoking **max(i, j)** passes the values **i** and **j** to parameters **num1** and **num2** in the **max** function. So now **num1** and **num2** reference **int** objects **5** and **2**. The **max** function finds the maximum number and assigns it to **result**, so  **result** now references **int** object **5**. The result is returned to the **main** function and assigned to variable **k**. Now **k** references **int** object 5. After the **main** function is finished, the stack is empty. The objects in the heap are automatically destroyed by the Python interpreter when they are no longer needed.
 
    ![call_stack0](/assets/img/posts/python_notes/call_stack0.PNG)![call_stack1](/assets/img/posts/python_notes/call_stack1.PNG)![call_stack2](/assets/img/posts/python_notes/call_stack2.PNG)
+
+3. Technically, every function in Python returns a value whether you use **return** or not. If a function does not return a value, by default, it returns a special value **None**. For this reason, a function that does not return a value is also called a **None** function. The **None** value can be assigned to a variable to indicate that the variable does not reference any object. 
+
+   A **return** statement is not needed for a **None** function, but it can be used for terminating the function and returning control to the function’s caller. The syntax is simply **return** or **return None** This is rarely used, but it is sometimes useful for circumventing the normal flow of control in a function that does not return any value. For example, the following code has a return statement to terminate the function when the score is invalid.
+
+   ```python
+   # Print grade for the score
+   def printGrade(score):
+       if score < 0 or score > 100:
+           print("Invalid score")
+           return # Same as return None
+       if score >= 90.0:
+           print('A')
+       elif score >= 80.0:
+           print('B')
+       elif score >= 70.0:
+           print('C')
+       elif score >= 60.0:
+           print('D')
+       else:
+           print('F')
+   ```
+
+4. When calling a function, you need to pass arguments to parameters. There are two kinds of arguments: positional arguments and keyword arguments. Using positional arguments requires that the arguments be passed in the same order as their respective parameters in the function header. For example, the following function prints a message **n** times:
+
+   ```python
+   def nPrintln(message, n):
+       for i inrange(n):
+           print(message)
+   ```
+
+   You can use **nPrintln('a', 3)** to print **a** three times. The **nPrintln('a', 3)** statement passes **a** to **message**, passes **3** to **n**, and prints **a** three times. However, the statement **nPrintln(3, 'a')** has a different meaning. It passes **3** to **message** and **a** to **n**. When we call a function like this, it is said to use *positional arguments*. The arguments must match the parameters in *order*, *number*, and *compatible type*, as defined in the function header.
+
+   You can also call a function using keyword arguments, passing each argument in the form name value. For example, **nPrintln(n = 5, message = "good")** passes **5** to **n** and **"good"** to **message**. The arguments can appear in any order using keyword arguments.
+
+   It is possible to mix positional arguments with keyword arguments, but the positional arguments cannot appear after any keyword arguments. Suppose a function header is
+
+   ```python
+   def f(p1, p2, p3):
+   ```
+
+   You can invoke it by using
+
+   ```python
+   f(30, p2 = 4, p3 = 10)
+   ```
+
+   However, it would be wrong to invoke it by using
+
+   ```python
+   f(30, p2 = 4, 10)
+   ```
+
+   because the positional argument **10** appears after the keyword argument **p2 = 4**.
+
+5. Because all data are objects in Python, a variable for an object is actually a reference to the object. When you invoke a function with arguments, the reference value of each argument is passed to the parameter. This is referred to as *pass-by-value* in programming terminology. For simplicity, we say that the value of an argument is passed to a parameter when invoking a function. The value is actually a reference value to the object.
+
+   If the argument is a number or a string, the argument is not affected, regardless of the changes made to the parameter inside the function.
+
+   ```python
+   def main():
+       x = 1
+       print("Before the call, x is", x)
+       increment(x)
+       print("After the call, x is", x)
+   
+   def increment(n):
+       n += 1
+       print("\tn inside the function is", n)
+   
+   main() # Call the main function
+   ```
+
+   > Before the call, x is 1
+   >     n inside the function is 2
+   > After the call, x is 1
+
+   the value of **x(1)** is passed to the parameter **n** to invoke the increment function (line 4). The parameter **n** is incremented by 1in the function (line 8), but **x** is not changed no matter what the function does.
+
+   The reason is that numbers and strings are known as *immutable objects*. The contents of immutable objects cannot be changed. Whenever you assign a new number to a variable, Python creates a new object for the new number and assigns the reference of the new object to the variable.
+
+   Consider the following code:
+
+   ```python
+   >>> x = 4
+   >>> y = x
+   >>> id(x) # The reference of x
+   505408920
+   >>> id(y) # The reference of y is the same as the reference of x
+   505408920
+   >>>
+   ```
+
+   You assign **x** to **y**, and both **x** and **y** now point to the same object for integer value **4**, as
+   shown in Figure 6.4a–b. But if you add **1** to **y**, a new object is created and assigned to **y**,Now **y** refers to a new object, as shown in the following code:
+
+   ```python
+   >>> y = y + 1 # y now points to a new int object with value 5
+   >>> id(y)
+   505408936
+   >>>
+   ```
+
+6. In Python, you can place the function definition into a file called *module* with the file-name extension **.py**. The module can be later imported into a program for reuse. The module file should be placed in the same directory with your other programs. A module can contain more than one function. Each function in a module must have a different name. Note that the **turtle**, **random**, and **math** are the modules defined in the Python library, and thus they can be imported into any Python program.
+
+   **GreatestCommonDivisor.py**, shows a program that prompts the user to enter two integers and displays their greatest common divisor. You can rewrite the program to use a function and place it into a module named **GCDFunction.py**.
+
+   GCDFunction.py
+
+   ```python
+   # Return the gcd of two integers
+   def gcd(n1, n2):
+       gcd = 1# Initial gcd is 1
+       k = 2 # Possible gcd
+   
+       whilek <= n1 andk <= n2:
+           if n1 % k == 0andn2 % k == 0:
+               gcd = k # Update gcd
+               k += 1
+   
+       return gcd  # Return gcd
+   ```
+
+   Now we write a separate program to use the **gcd** function.
+
+   TestGCDFunction.py
+
+   ```python
+   from GCDFunction import gcd # Import the gcd function
+   
+   # Prompt the user to enter two integers
+   n1 = eval(input("Enter the first integer: "))
+   n2 = eval(input("Enter the second integer: "))
+   
+   print("The greatest common divisor for", n1,
+   "and", n2, "is", )
+   ```
+
+   Line 1 imports the **gcd** function from the **GCDFunction** module, which enables you to invoke **gcd** in this program. You can also import it using the following statement:
+
+   ```python
+   import GCDFunction
+   ```
+
+   Using this statement, you would have to invoke **gcd** using **GCDFunction.gcd**.
+
+   What happens if you define two functions with the same name in a module? There is no syntax error in this case, but the latter function definition prevails.
+
+7. The following code demonstrates how to define functions with *default argument* values and how to
+   invoke such functions.
+
+   ```python
+   def printArea( ):
+   area = width * height
+   print("width:", width, "\theight:", height, "\tarea:", area)
+   
+   printArea() # Default arguments width = 1 and height = 2
+   printArea(4, 2.5) # Positional arguments width = 4 and height = 2.5
+   printArea(height = 5, width = 3) # Keyword arguments width
+   printArea(width = 1.2) # Default height = 2
+   printArea(height = 6.2) # Default width = 1
+   ```
+
+   Line 1 defines the **printArea** function with the parameters **width** and **height**. **width** has the default value **1** and **height** has the default value **2**. Line 5 invokes the function without passing an argument, so the program uses the default value **1** assigned to **width** and **2** to **height**. Line 6 invokes the function by passing **4** to **width** and **2.5** to **height**. Line 7 invokes the function by passing **3** to **width** and **5** to **height**. Note that you can also pass the argument by specifying the parameter name, as shown in lines 8 and 9.
+
+   A function may mix parameters with default arguments and non-default arguments. In this case, the non-default parameters must be defined before default parameters.
+
+   Many programming languages support a useful feature that allows you to define two functions with the same name in a module, but it is not supported in Python. With default arguments, you can define a function once, and call the function in many different ways. This achieves the same effect as defining multiple functions with the same name in other programming languages. If you define multiple functions in Python, the later definition replaces the previous definitions.
+
+8. Python allows a function to return multiple values.
+
+   ```python
+   defsort(number1, number2):
+       if number1 < number2:
+           return number1, number2
+       else:
+           return number2, number1
+   
+   n1, n2 = sort(3, 2)
+   print("n1 is", n1)
+   print("n2 is", n2)
+   ```
+
+   
+
