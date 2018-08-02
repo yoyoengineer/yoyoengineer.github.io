@@ -8,7 +8,7 @@ categories: mysql
 
 # Mysql Notes
 
-用navicat等客户端连接mysql8时，可能会遇到`[Authentication plugin 'caching_sha2_password' cannot be loaded](https://stackoverflow.com/questions/49194719/authentication-plugin-caching-sha2-password-cannot-be-loaded)`的问题。可以用命令行登录mysql，并执行以下命令：
+用navicat等客户端连接mysql8时，可能会遇到`[Authentication plugin 'caching_sha2_password' cannot be loaded]`的问题。可以用命令行登录mysql，并执行以下命令：
 
 ```mysql
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'newrootpassword';
