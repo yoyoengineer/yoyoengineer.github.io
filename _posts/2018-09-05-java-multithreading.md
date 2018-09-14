@@ -3003,7 +3003,7 @@ public class Run {
 
 更改类`Run.java`的代码:
 
-```
+```java
 public class Run {
     public static void main(String[] args) throws InterruptedException {
 
@@ -3023,4 +3023,849 @@ public class Run {
 ```
 
 ![](/assets/img/posts/java_multithread_notes/Snipaste_2018-09-13_13-48-01.png)
+
+### 线程的状态
+
+![](/assets/img/posts/java_multithread_notes/Snipaste_2018-09-13_19-28-56.png)
+
+![](/assets/img/posts/java_multithread_notes/Snipaste_2018-09-13_19-29-15.png)
+
+```java
+public class MyThread extends Thread {
+    public MyThread() {
+        System.out.println("构造方法中的状态：" + Thread.currentThread().getState());
+    }
+
+    @Override
+    public void run() {
+        System.out.println("run方法中的状态：" + Thread.currentThread().getState());
+    }
+}
+```
+
+```java
+public class Run {
+    public static void main(String[] args) {
+        try {
+            MyThread t = new MyThread();
+            System.out.println("main方法中的状态1：" + t.getState());
+            Thread.sleep(1000);
+            t.start();
+            Thread.sleep(1000);
+            System.out.println("main方法中的状态2：" + t.getState());
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+![](/assets/img/posts/java_multithread_notes/Snipaste_2018-09-13_19-32-33.png)
+
+```java
+public class MyThread extends Thread{
+    @Override
+    public void run() {
+        try {
+            System.out.println("begin sleep");
+            Thread.sleep(10000);
+            System.out.println("  end sleep");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+```java
+public class Run {
+    public static void main(String[] args) {
+        try {
+            MyThread t = new MyThread();
+            t.start();
+            Thread.sleep(1000);
+            System.out.println("main方法中的状态：" + t.getState());
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+![](/assets/img/posts/java_multithread_notes/Snipaste_2018-09-13_19-44-37.png)
+
+```java
+public class MyService {
+    synchronized static public void serviceMethod() {
+        try {
+            System.out.println(Thread.currentThread().getName() + "进入了业务方法！");
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+```java
+public class MyThread1 extends Thread {
+    @Override
+    public void run() {
+        MyService.serviceMethod();
+    }
+}
+```
+
+```java
+public class MyThread2 extends Thread {
+    @Override
+    public void run() {
+        MyService.serviceMethod();
+    }
+}
+```
+
+```java
+public class Run {
+    public static void main(String[] args) throws InterruptedException {
+        MyThread1 t1 = new MyThread1();
+        t1.setName("a");
+        t1.start();
+        MyThread2 t2 = new MyThread2();
+        t2.setName("b");
+        t2.start();
+        Thread.sleep(1000);
+        System.out.println("main方法中的t2状态：" + t2.getState());
+    }
+}
+```
+
+![](/assets/img/posts/java_multithread_notes/Snipaste_2018-09-13_20-37-46.png)
+
+```java
+public class Lock {
+    public static final Byte lock = new Byte("0");
+}
+```
+
+```java
+public class MyThread extends Thread{
+    @Override
+    public void run() {
+        try {
+            synchronized (Lock.lock) {
+                Lock.lock.wait();
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+```java
+public class Run {
+    public static void main(String[] args) {
+        try {
+            MyThread t = new MyThread();
+            t.start();
+            Thread.sleep(1000);
+            System.out.println("main方法中的t状态：" + t.getState());
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+![](/assets/img/posts/java_multithread_notes/Snipaste_2018-09-13_20-47-43.png)
+
+
+
+### 线程组
+
+```java
+public class ThreadA extends Thread{
+    @Override
+    public void run() {
+        try {
+            while (!Thread.currentThread().isInterrupted()) {
+                System.out
+                        .println("ThreadName=" +
+                                Thread.currentThread().
+                                        getName());
+                Thread.sleep(3000);
+            }
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+```java
+public class ThreadB extends Thread{
+    @Override
+    public void run() {
+        try {
+            while (!Thread.currentThread().isInterrupted()) {
+                System.out
+                        .println("ThreadName=" +
+                                Thread.currentThread().
+                                        getName());
+                Thread.sleep(3000);
+            }
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+```java
+public class Run {
+    public static void main(String[] args) {
+        ThreadA aRunnable = new ThreadA();
+        ThreadB bRunnable = new ThreadB();
+
+        ThreadGroup group = new ThreadGroup("thread group");
+
+        Thread aThread = new Thread(group, aRunnable);
+        Thread bThread = new Thread(group, bRunnable);
+        aThread.start();
+        bThread.start();
+
+        System.out.println("活动的线程数为：" + group.activeCount());
+        System.out.println("线程组的名称为：" + group.getName());
+
+    }
+}
+```
+
+![](/assets/img/posts/java_multithread_notes/Snipaste_2018-09-13_21-09-50.png)
+
+```java
+public class Run {
+    public static void main(String[] args) {
+
+        // 在main组中添加一个线程组A，然后在这个A组中添加线程对象Z
+        // 方法activeGroupCount()和activeCount()的值不是固定的
+        // 是系统中环境的一个快照
+        ThreadGroup mainGroup = Thread.currentThread().getThreadGroup();
+        ThreadGroup group = new ThreadGroup(mainGroup, "A");
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    System.out.println("runMethod!");
+                    Thread.sleep(10000);// 线程必须在运行状态才可以受组管理
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        };
+
+        Thread newThread = new Thread(group, runnable);
+        newThread.setName("Z");
+        newThread.start();// 线程必须启动然后才归到组A中
+        // ///
+        ThreadGroup[] listGroup = new ThreadGroup[Thread.currentThread()
+                .getThreadGroup().activeGroupCount()];
+        Thread.currentThread().getThreadGroup().enumerate(listGroup);
+        System.out.println("main线程中有多少个子线程组：" + listGroup.length + " 名字为："
+                + listGroup[0].getName());
+        Thread[] listThread = new Thread[listGroup[0].activeCount()];
+        listGroup[0].enumerate(listThread);
+        System.out.println(listThread[0].getName());
+
+    }
+}
+```
+
+![](/assets/img/posts/java_multithread_notes/Snipaste_2018-09-13_21-41-27.png)
+
+![](/assets/img/posts/java_multithread_notes/Snipaste_2018-09-13_21-45-05.png)
+
+```java
+public class Run {
+    public static void main(String[] args) {
+        System.out.println("线程：" + Thread.currentThread().getName()
+                + " 所在的线程组名为："
+                + Thread.currentThread().getThreadGroup().getName());
+        System.out
+                .println("main线程所在的线程组的父线程组的名称是："
+                        + Thread.currentThread().getThreadGroup().getParent()
+                        .getName());
+        System.out.println("main线程所在的线程组的父线程组的父线程组的名称是："
+                + Thread.currentThread().getThreadGroup().getParent()
+                .getParent().getName());
+    }
+}
+```
+
+![](/assets/img/posts/java_multithread_notes/Snipaste_2018-09-13_21-54-08.png)
+
+运行结果说明JVM的根线程组就是system，再取其父线程组则出现空异常。
+
+
+
+### 线程组里加线程组
+
+```java
+public class Run {
+    public static void main(String[] args) {
+
+        System.out.println("线程组名称："
+                + Thread.currentThread().getThreadGroup().getName());
+        System.out.println("线程组中活动的线程数量："
+                + Thread.currentThread().getThreadGroup().activeCount());
+        System.out.println("线程组中线程组的数量-加之前："
+                + Thread.currentThread().getThreadGroup().activeGroupCount());
+        ThreadGroup newGroup = new ThreadGroup(Thread.currentThread()
+                .getThreadGroup(), "newGroup");
+        System.out.println("线程组中线程组的数量-加之之后："
+                + Thread.currentThread().getThreadGroup().activeGroupCount());
+        System.out
+                .println("父线程组名称："
+                        + Thread.currentThread().getThreadGroup().getParent()
+                        .getName());
+    }
+}
+```
+
+![](/assets/img/posts/java_multithread_notes/Snipaste_2018-09-14_09-34-18.png)
+
+
+
+### 组内的线程批量停止
+
+```java
+public class MyThread extends Thread {
+    public MyThread(ThreadGroup group, String name) {
+        super(group, name);
+    }
+
+    @Override
+    public void run() {
+        System.out.println("ThreadName=" + Thread.currentThread().getName()
+                + "准备开始死循环了：)");
+        while (!this.isInterrupted()) {
+        }
+        System.out.println("ThreadName=" + Thread.currentThread().getName()
+                + "结束了：)");
+    }
+}
+```
+
+```java
+public class Run {
+    public static void main(String[] args) {
+        try {
+            ThreadGroup group = new ThreadGroup("我的线程组");
+
+            for (int i = 0; i < 5; i++) {
+                MyThread thread = new MyThread(group, "线程" + (i + 1));
+                thread.start();
+            }
+            Thread.sleep(5000);
+            group.interrupt();
+            System.out.println("调用了interrupt()方法");
+        } catch (InterruptedException e) {
+            System.out.println("停了停了！");
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+![](/assets/img/posts/java_multithread_notes/Snipaste_2018-09-14_09-39-21.png)
+
+### 递归与非递归取得组内对象
+
+```java
+public class Run {
+    public static void main(String[] args) {
+
+        ThreadGroup mainGroup = Thread.currentThread().getThreadGroup();
+        ThreadGroup groupA = new ThreadGroup(mainGroup, "A");
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    System.out.println("runMethod!");
+                    Thread.sleep(10000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        ThreadGroup groupB = new ThreadGroup(groupA, "B");
+
+        // 分配空间，但不一定全部用完
+        ThreadGroup[] listGroup1 = new ThreadGroup[Thread.currentThread()
+                .getThreadGroup().activeGroupCount()];
+        // 非递归取得子对象，也就是不取得Z线程
+        Thread.currentThread().getThreadGroup().enumerate(listGroup1, true);
+        for (int i = 0; i < listGroup1.length; i++) {
+            if (listGroup1[i] != null) {
+                System.out.println(listGroup1[i].getName());
+            }
+        }
+        ThreadGroup[] listGroup2 = new ThreadGroup[Thread.currentThread()
+                .getThreadGroup().activeGroupCount()];
+        Thread.currentThread().getThreadGroup().enumerate(listGroup2, false);
+        for (int i = 0; i < listGroup2.length; i++) {
+            if (listGroup2[i] != null) {
+                System.out.println(listGroup2[i].getName());
+            }
+        }
+
+    }
+}
+```
+
+![](/assets/img/posts/java_multithread_notes/Snipaste_2018-09-14_09-44-57.png)
+
+### 使线程具有有序性
+
+```java
+public class MyThread extends Thread {
+    private Object lock;
+    private String showChar;
+    private int showNumPosition;
+
+    private int printCount = 0;// 统计打印了几个字母
+
+    volatile private static int addNumber = 1;
+
+    public MyThread(Object lock, String showChar, int showNumPosition) {
+        super();
+        this.lock = lock;
+        this.showChar = showChar;
+        this.showNumPosition = showNumPosition;
+    }
+
+    @Override
+    public void run() {
+        try {
+            synchronized (lock) {
+                while (true) {
+                    if (addNumber % 3 == showNumPosition) {
+                        System.out.println("ThreadName="
+                                + Thread.currentThread().getName()
+                                + " runCount=" + addNumber + " " + showChar);
+                        lock.notifyAll();
+                        addNumber++;
+                        printCount++;
+                        if (printCount == 3) {
+                            break;
+                        }
+                    } else {
+                        lock.wait();
+                    }
+                }
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+```java
+public class Run {
+    public static void main(String[] args) {
+        Object lock = new Object();
+
+        MyThread a = new MyThread(lock, "A", 1);
+        MyThread b = new MyThread(lock, "B", 2);
+        MyThread c = new MyThread(lock, "C", 0);
+
+        a.start();
+        b.start();
+        c.start();
+    }
+}
+```
+
+![](/assets/img/posts/java_multithread_notes/Snipaste_2018-09-14_09-56-37.png)
+
+
+
+### SimpleDateFormat非线程安全
+
+```java
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class MyThread extends Thread {
+    private SimpleDateFormat sdf;
+    private String dateString;
+
+    public MyThread(SimpleDateFormat sdf, String dateString) {
+        super();
+        this.sdf = sdf;
+        this.dateString = dateString;
+    }
+
+    @Override
+    public void run() {
+        try {
+            Date dateRef = sdf.parse(dateString);
+            String newDateString = sdf.format(dateRef).toString();
+            if (!newDateString.equals(dateString)) {
+                System.out.println("ThreadName=" + this.getName()
+                        + "报错了 日期字符串：" + dateString + " 转换成的日期为："
+                        + newDateString);
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+```java
+public class Test {
+    public static void main(String[] args) {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+        String[] dateStringArray = new String[] { "2000-01-01", "2000-01-02",
+                "2000-01-03", "2000-01-04", "2000-01-05", "2000-01-06",
+                "2000-01-07", "2000-01-08", "2000-01-09", "2000-01-10" };
+
+        MyThread[] threadArray = new MyThread[10];
+        for (int i = 0; i < 10; i++) {
+            threadArray[i] = new MyThread(sdf, dateStringArray[i]);
+        }
+        for (int i = 0; i < 10; i++) {
+            threadArray[i].start();
+        }
+
+    }
+}
+```
+
+![](/assets/img/posts/java_multithread_notes/Snipaste_2018-09-14_10-17-37.png)
+
+解决方法1
+
+```java
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class DateTools {
+    public static Date parse(String formatPattern, String dateString)
+            throws ParseException {
+        return new SimpleDateFormat(formatPattern).parse(dateString);
+    }
+
+    public static String format(String formatPattern, Date date) {
+        return new SimpleDateFormat(formatPattern).format(date).toString();
+    }
+}
+```
+
+```java
+import java.text.ParseException;
+import java.util.Date;
+
+public class MyThread extends Thread {
+    private String sdf;
+    private String dateString;
+
+    public MyThread(String sdf, String dateString) {
+        super();
+        this.sdf = sdf;
+        this.dateString = dateString;
+    }
+
+    @Override
+    public void run() {
+        try {
+            Date dateRef = DateTools.parse(sdf, dateString);
+            String newDateString = DateTools.format(sdf, dateRef)
+                    .toString();
+            if (!newDateString.equals(dateString)) {
+                System.out.println("ThreadName=" + this.getName()
+                        + "报错了 日期字符串：" + dateString + " 转换成的日期为："
+                        + newDateString);
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+```java
+public class Test {
+    public static void main(String[] args) {
+        String[] dateStringArray = new String[] { "2000-01-01", "2000-01-02",
+                "2000-01-03", "2000-01-04", "2000-01-05", "2000-01-06",
+                "2000-01-07", "2000-01-08", "2000-01-09", "2000-01-10" };
+
+        MyThread[] threadArray = new MyThread[10];
+        for (int i = 0; i < 10; i++) {
+            threadArray[i] = new MyThread("yyyy-MM-dd", dateStringArray[i]);
+        }
+        for (int i = 0; i < 10; i++) {
+            threadArray[i].start();
+        }
+    }
+}
+```
+
+![](/assets/img/posts/java_multithread_notes/Snipaste_2018-09-14_11-54-19.png)
+
+控制台中没有输出任何异常，解决处理错误的原理其实就是创建了多个`SimpleDateFormat`类的实例。
+
+解决方法2
+
+```java
+import java.text.SimpleDateFormat;
+
+public class DateTools {
+    private static ThreadLocal<SimpleDateFormat> tl = new ThreadLocal<>();
+
+    public static SimpleDateFormat getSimpleDateFormat(String datePattern) {
+        SimpleDateFormat sdf;
+        sdf = tl.get();
+        if (sdf == null) {
+            sdf = new SimpleDateFormat(datePattern);
+            tl.set(sdf);
+        }
+        return sdf;
+    }
+}
+```
+
+```java
+import java.text.ParseException;
+import java.util.Date;
+
+public class MyThread extends Thread {
+    private String sdf;
+    private String dateString;
+
+    public MyThread(String sdf, String dateString) {
+        super();
+        this.sdf = sdf;
+        this.dateString = dateString;
+    }
+
+    @Override
+    public void run() {
+        try {
+            Date dateRef = DateTools.getSimpleDateFormat(sdf).parse(
+                    dateString);
+            String newDateString = DateTools.getSimpleDateFormat(sdf)
+                    .format(dateRef);
+            if (!newDateString.equals(dateString)) {
+                System.out.println("ThreadName=" + this.getName()
+                        + "报错了 日期字符串：" + dateString + " 转换成的日期为："
+                        + newDateString);
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+```java
+public class Test {
+    public static void main(String[] args) {
+        String[] dateStringArray = new String[] { "2000-01-01", "2000-01-02",
+                "2000-01-03", "2000-01-04", "2000-01-05", "2000-01-06",
+                "2000-01-07", "2000-01-08", "2000-01-09", "2000-01-10" };
+
+        MyThread[] threadArray = new MyThread[10];
+        for (int i = 0; i < 10; i++) {
+            threadArray[i] = new MyThread("yyyy-MM-dd", dateStringArray[i]);
+        }
+        for (int i = 0; i < 10; i++) {
+            threadArray[i].start();
+        }
+    }
+}
+```
+
+![](/assets/img/posts/java_multithread_notes/Snipaste_2018-09-14_11-54-19.png)
+
+```java
+public class MyThread extends Thread {
+    @Override
+    public void run() {
+        String username = null;
+        System.out.println(username.hashCode());
+    }
+}
+```
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        MyThread t = new MyThread();
+        t.start();
+    }
+}
+```
+
+![](/assets/img/posts/java_multithread_notes/Snipaste_2018-09-14_13-26-25.png)
+
+![](/assets/img/posts/java_multithread_notes/Snipaste_2018-09-14_13-33-39.png)
+
+修改`Main.java`
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        MyThread t1 = new MyThread();
+        t1.setName("线程t1");
+        t1.setUncaughtExceptionHandler((t, e) -> {
+            System.out.println("线程:" + t.getName() + " 出现了异常：");
+            e.printStackTrace();
+        });
+        t1.start();
+
+        MyThread t2 = new MyThread();
+        t2.setName("线程t2");
+        t2.start();
+    }
+}
+```
+
+![](/assets/img/posts/java_multithread_notes/Snipaste_2018-09-14_13-34-36.png)
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        MyThread
+                .setDefaultUncaughtExceptionHandler((t, e) -> {
+                    System.out.println("线程:" + t.getName() + " 出现了异常：");
+                    e.printStackTrace();
+
+                });
+
+        MyThread t1 = new MyThread();
+        t1.setName("线程t1");
+        t1.start();
+
+        MyThread t2 = new MyThread();
+        t2.setName("线程t2");
+        t2.start();
+    }
+}
+```
+
+![](/assets/img/posts/java_multithread_notes/Snipaste_2018-09-14_13-31-54.png)
+
+
+
+### 线程组内处理异常
+
+```java
+public class MyThread extends Thread {
+    private String num;
+
+    public MyThread(ThreadGroup group, String name, String num) {
+        super(group, name);
+        this.num = num;
+    }
+
+    @Override
+    public void run() {
+        int numInt = Integer.parseInt(num);
+        while (true) {
+            System.out.println("死循环中：" + Thread.currentThread().getName());
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+```
+
+```java
+public class Run {
+    public static void main(String[] args) {
+        ThreadGroup group = new ThreadGroup("我的线程组");
+        MyThread[] myThread = new MyThread[10];
+        for (int i = 0; i < myThread.length; i++) {
+            myThread[i] = new MyThread(group, "线程" + (i + 1), "1");
+            myThread[i].start();
+        }
+        MyThread newT = new MyThread(group, "报错线程", "a");
+        newT.start();
+    }
+}
+```
+
+![](/assets/img/posts/java_multithread_notes/Snipaste_2018-09-14_14-06-31.png)
+
+程序运行后，其中一个线程出现异常，但其他线程却一直以死循环的方式持续打印结果。
+
+![](/assets/img/posts/java_multithread_notes/Snipaste_2018-09-14_14-19-57.png)
+
+```java
+public class MyThreadGroup extends ThreadGroup{
+    public MyThreadGroup(String name) {
+        super(name);
+    }
+
+    @Override
+    public void uncaughtException(Thread t, Throwable e) {
+        super.uncaughtException(t, e);
+        this.interrupt();
+    }
+}
+```
+
+```java
+public class MyThread extends Thread{
+    private String num;
+
+    public MyThread(ThreadGroup group, String name, String num) {
+        super(group, name);
+        this.num = num;
+    }
+
+    @Override
+    public void run() {
+        int numInt = Integer.parseInt(num);
+        while (this.isInterrupted() == false) {
+            System.out.println("死循环中：" + Thread.currentThread().getName());
+        }
+    }
+}
+```
+
+```java
+public class Run {
+    public static void main(String[] args) {
+        MyThreadGroup group = new MyThreadGroup("我的线程组");
+        MyThread[] myThread = new MyThread[10];
+        for (int i = 0; i < myThread.length; i++) {
+            myThread[i] = new MyThread(group, "线程" + (i + 1), "1");
+            myThread[i].start();
+        }
+        MyThread newT = new MyThread(group, "报错线程", "a");
+        newT.start();
+    }
+}
+```
+
+![](/assets/img/posts/java_multithread_notes/Snipaste_2018-09-14_14-17-17.png)
 
