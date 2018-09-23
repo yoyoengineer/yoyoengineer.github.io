@@ -6,37 +6,37 @@ featured-img: problems
 categories: Problems
 ---
 
-![](../assets/img/posts/problems/Snipaste_2018-09-17_14-57-30.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-17_14-57-30.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-17_14-52-59.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-17_14-52-59.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-17_14-49-58.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-17_14-49-58.png)
 
 java中小数默认为double类型
 
-![](../assets/img/posts/problems/Snipaste_2018-09-17_14-44-25.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-17_14-44-25.png)
 
 因为100%4=0，1000%8=0，10000%16=0，所以845678992357836701%16 = 6701%16，然后因为2000%16=0，所以6701%16 = 701%16 = 13 =D
 
-![](../assets/img/posts/problems/Snipaste_2018-09-17_15-16-47.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-17_15-16-47.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-16_21-57-40.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-16_21-57-40.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-16_21-58-17.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-16_21-58-17.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-16_21-59-52.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-16_21-59-52.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-16_22-01-28.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-16_22-01-28.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-16_22-02-16.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-16_22-02-16.png)
 
 Object类中的所有方法
 
-![](../assets/img/posts/problems/Snipaste_2018-09-22_13-00-16.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-22_13-00-16.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-17_15-50-18.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-17_15-50-18.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-17_11-48-56.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-17_11-48-56.png)
 
 ### 排序
 
@@ -44,19 +44,19 @@ Object类中的所有方法
 
 一趟排序过程
 
-![](../assets/img/posts/problems/Snipaste_2018-09-18_16-40-42.png)![](../assets/img/posts/problems/Snipaste_2018-09-18_16-41-28.png)![](../assets/img/posts/problems/Snipaste_2018-09-18_16-42-30.png)![](../assets/img/posts/problems/Snipaste_2018-09-18_16-43-04.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-18_16-40-42.png)![](/assets/img/posts/problems/Snipaste_2018-09-18_16-41-28.png)![](/assets/img/posts/problems/Snipaste_2018-09-18_16-42-30.png)![](/assets/img/posts/problems/Snipaste_2018-09-18_16-43-04.png)
 
 最好情况是整个序列从一开始就是有序的，但至少要从上到下扫描一遍，所以时间复杂度是O(N),最坏情况是序列一开始是完全逆序的，每一趟都要两两交换，且要扫描N趟，所以时间复杂度是O(N^2).冒泡排序的一个好处是不管对于数组存储的数据还是链表存储的数据都是没有问题的，因为它每次都是从上到下按顺序扫描，而且交换的是相邻的元素。
 
-![](../assets/img/posts/problems/Snipaste_2018-09-18_16-54-34.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-18_16-54-34.png)
 
 #### 插入排序
 
-![](../assets/img/posts/problems/Snipaste_2018-09-18_17-57-10.png)![](../assets/img/posts/problems/Snipaste_2018-09-18_17-57-42.png)![](../assets/img/posts/problems/Snipaste_2018-09-18_17-58-05.png)![](../assets/img/posts/problems/Snipaste_2018-09-18_17-59-06.png)![](../assets/img/posts/problems/Snipaste_2018-09-18_17-59-31.png)![](../assets/img/posts/problems/Snipaste_2018-09-18_18-00-47.png)![](../assets/img/posts/problems/Snipaste_2018-09-18_18-01-29.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-18_17-57-10.png)![](/assets/img/posts/problems/Snipaste_2018-09-18_17-57-42.png)![](/assets/img/posts/problems/Snipaste_2018-09-18_17-58-05.png)![](/assets/img/posts/problems/Snipaste_2018-09-18_17-59-06.png)![](/assets/img/posts/problems/Snipaste_2018-09-18_17-59-31.png)![](/assets/img/posts/problems/Snipaste_2018-09-18_18-00-47.png)![](/assets/img/posts/problems/Snipaste_2018-09-18_18-01-29.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-18_18-07-58.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-18_18-07-58.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-18_18-08-13.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-18_18-08-13.png)
 
 插入排序的最好情况也是原来的序列就是有序的，此时原有的牌不需要向后错位，新牌直接插在原来的牌后面，此时的时间复杂度是O(N),原序列是逆序时复杂度为O(N^2),因为每插入一张新牌都要将之前的所有牌向后错一位。
 
@@ -64,49 +64,49 @@ Object类中的所有方法
 
 选主元
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_09-55-52.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_09-55-52.png)
 
 For Example:
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_10-20-22.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_10-20-22.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_10-22-43.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_10-22-43.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_10-29-19.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_10-29-19.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_10-37-12.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_10-37-12.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_10-40-25.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_10-40-25.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_10-45-27.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_10-45-27.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_10-46-29.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_10-46-29.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_10-47-50.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_10-47-50.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_10-49-02.png)
-
-......
-
-![](../assets/img/posts/problems/Snipaste_2018-09-19_10-50-04.png)
-
-![](../assets/img/posts/problems/Snipaste_2018-09-19_10-51-24.png)
-
-![](../assets/img/posts/problems/Snipaste_2018-09-19_10-52-31.png)
-
-![](../assets/img/posts/problems/Snipaste_2018-09-19_10-53-33.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_10-49-02.png)
 
 ......
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_10-54-43.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_10-50-04.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_10-55-51.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_10-51-24.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_10-56-54.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_10-52-31.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_10-59-22.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_10-53-33.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_10-58-11.png)
+......
+
+![](/assets/img/posts/problems/Snipaste_2018-09-19_10-54-43.png)
+
+![](/assets/img/posts/problems/Snipaste_2018-09-19_10-55-51.png)
+
+![](/assets/img/posts/problems/Snipaste_2018-09-19_10-56-54.png)
+
+![](/assets/img/posts/problems/Snipaste_2018-09-19_10-59-22.png)
+
+![](/assets/img/posts/problems/Snipaste_2018-09-19_10-58-11.png)
 
 
 
@@ -166,7 +166,7 @@ void QuickSort( ElementType A[], int N )
 
 #### 堆排序
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_11-49-31.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_11-49-31.png)
 
 ```c
 typedef struct HNode *Heap; /* 堆的类型定义 */
@@ -195,21 +195,21 @@ MaxHeap CreateHeap( int MaxSize )
 
 最大堆的插入
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_12-02-06.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_12-02-06.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_12-03-09.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_12-03-09.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_12-07-31.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_12-07-31.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_13-12-16.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_13-12-16.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_13-15-51.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_13-15-51.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_13-23-59.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_13-23-59.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_13-27-49.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_13-27-49.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_13-31-40.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_13-31-40.png)
 
 ```c
 bool IsFull( MaxHeap H )
@@ -235,15 +235,15 @@ bool Insert( MaxHeap H, ElementType X )
 
 最大堆的删除
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_13-39-54.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_13-39-54.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_13-41-27.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_13-41-27.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_13-43-45.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_13-43-45.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_13-45-14.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_13-45-14.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_13-47-07.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_13-47-07.png)
 
 ```c
 bool IsEmpty( MaxHeap H )
@@ -280,21 +280,21 @@ ElementType DeleteMax( MaxHeap H )
 
 最大堆的建立
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_14-55-44.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_14-55-44.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_14-57-19.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_14-57-19.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_14-58-27.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_14-58-27.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_14-59-36.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_14-59-36.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_15-00-31.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_15-00-31.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_15-01-26.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_15-01-26.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_15-02-32.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_15-02-32.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_15-09-34.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_15-09-34.png)
 
 ```c
 /*----------- 建造最大堆 -----------*/
@@ -329,27 +329,27 @@ void BuildHeap( MaxHeap H )
 
 堆排序
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_15-26-15.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_15-26-15.png)
 
 先将其调整为一个最大堆
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_15-29-16.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_15-29-16.png)
 
 接着将根节点和最后一个节点进行交换
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_15-31-16.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_15-31-16.png)
 
 然后将堆的规模减一，后面的操作就可以将d排除在外，因为d已经在它正确的位置上了。再继续将剩下的元素调成最大堆
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_15-35-25.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_15-35-25.png)
 
 然后再重复之前的步骤。
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_15-37-01.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_15-37-01.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_15-38-14.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_15-38-14.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_15-39-40.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_15-39-40.png)
 
 堆排序时第一个元素下标为零，没有像之前的堆那样有一个哨兵元素，所以在循环的判断时要注意`i>0`这个条件。
 
@@ -392,15 +392,15 @@ void HeapSort( ElementType A[], int N )
 }
 ```
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_15-51-37.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_15-51-37.png)
 
 ### 滑动窗口协议
 
 由于Rdt3.0采用停等机制，所以其发送方利用率非常低下。因此，我们可以采用流水线机制来对其进行改进。通过流水线机制，可以允许发送方在收到ACK之前连续发送多个分组。同时，我们需要更大的序列号范围，发送方和/或接收方需要更大的空间以缓存分组。以前是发送一个分组，收到对应的ACK后就将其删除，但现在是连续发多个分组，所以就需要缓存更多还没确认的分组。而在计算机网络中实现流水线机制的便是滑动窗口协议。
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_18-37-10.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_18-37-10.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_18-39-54.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_18-39-54.png)
 
 图中绿色的部分表示已经发送完，并且成功确认的分组，黄色的部分表示已经发出去，但还没确认的分组，蓝色的表示还可以使用的序列号。
 
@@ -408,25 +408,25 @@ void HeapSort( ElementType A[], int N )
 
 GBN采用累计确认机制
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_18-54-22.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_18-54-22.png)
 
 发送方FSM
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_20-00-42.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_20-00-42.png)
 
 接收方FSM
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_20-20-42.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_20-20-42.png)
 
 #### SR(Selective Repeat)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_21-33-57.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_21-33-57.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_21-34-53.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_21-34-53.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_21-35-29.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_21-35-29.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-19_21-36-08.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-19_21-36-08.png)
 
 ### TCP
 
@@ -434,37 +434,37 @@ TCP同样采用流水线机制以及累计确认机制。但和GBN不一样的�
 
 #### TCP发送方事件
 
-![](../assets/img/posts/problems/Snipaste_2018-09-20_10-40-09.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-20_10-40-09.png)
 
 #### TCP发送端程序
 
-![](../assets/img/posts/problems/Snipaste_2018-09-20_10-44-39.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-20_10-44-39.png)
 
 #### TCP重传示例
 
-![](../assets/img/posts/problems/Snipaste_2018-09-20_10-46-16.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-20_10-46-16.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-20_10-47-15.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-20_10-47-15.png)
 
 #### TCP ACK生成
 
-![](../assets/img/posts/problems/Snipaste_2018-09-20_10-54-29.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-20_10-54-29.png)
 
 #### 快速重传
 
-![](../assets/img/posts/problems/Snipaste_2018-09-20_10-56-03.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-20_10-56-03.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-20_10-57-11.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-20_10-57-11.png)
 
 #### TCP流量控制
 
 由于上层应用处理速度较慢，而如果发送方发送数据太多，就会导致接收方buffer溢出，所以需要进行流量控制。
 
-![](../assets/img/posts/problems/Snipaste_2018-09-20_11-37-11.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-20_11-37-11.png)
 
 事实上TCP receiver并不会丢弃乱序的segment。
 
-![](../assets/img/posts/problems/Snipaste_2018-09-20_11-37-23.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-20_11-37-23.png)
 
 当Recerver告知Sender RcvWindow=0时，之后发送方任然可以发送一个很小的TCP段，从而捎回来新的RcvWindow信息，以便避免死锁情况的发生。
 
@@ -472,35 +472,35 @@ TCP同样采用流水线机制以及累计确认机制。但和GBN不一样的�
 
 利用TCP三次握手，可以发动syn洪水攻击(https://www.cisco.com/c/en/us/about/press/internet-protocol-journal/back-issues/table-contents-34/syn-flooding-attacks.html)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-20_13-37-23.jpg)
+![](/assets/img/posts/problems/Snipaste_2018-09-20_13-37-23.jpg)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-20_13-52-24.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-20_13-52-24.png)
 
-![](../assets/img/posts/problems/Snipaste_2018-09-20_11-37-24.png)![](../assets/img/posts/problems/Snipaste_2018-09-20_13-54-50.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-20_11-37-24.png)![](/assets/img/posts/problems/Snipaste_2018-09-20_13-54-50.png)
 
 java中，方法重写时，访问修饰符的限制一定要大于等于被重写方法的访问修饰符，子类中的方法与父类中的方法具有相同的方法名、返回类型和参数表 
 
 
 
-![](I:\githubpage\20180819\yoyoengineer.github.io\assets\img\posts\problems\Snipaste_2018-09-22_19-55-30.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-22_19-55-30.png)
 
-![](I:\githubpage\20180819\yoyoengineer.github.io\assets\img\posts\problems\Snipaste_2018-09-22_19-56-38.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-22_19-56-38.png)
 
-![](I:\githubpage\20180819\yoyoengineer.github.io\assets\img\posts\problems\Snipaste_2018-09-22_19-58-30.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-22_19-58-30.png)
 
 方法构造器没有返回类型
 
 在MySql中
 
-![](I:\githubpage\20180819\yoyoengineer.github.io\assets\img\posts\problems\Snipaste_2018-09-23_15-11-24.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-23_15-11-24.png)
 
-![](I:\githubpage\20180819\yoyoengineer.github.io\assets\img\posts\problems\Snipaste_2018-09-23_15-40-58.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-23_15-40-58.png)
 
-![](I:\githubpage\20180819\yoyoengineer.github.io\assets\img\posts\problems\Snipaste_2018-09-23_15-42-44.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-23_15-42-44.png)
 
-![](I:\githubpage\20180819\yoyoengineer.github.io\assets\img\posts\problems\Snipaste_2018-09-23_15-43-06.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-23_15-43-06.png)
 
-![](I:\githubpage\20180819\yoyoengineer.github.io\assets\img\posts\problems\Snipaste_2018-09-23_16-54-28.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-23_16-54-28.png)
 
 To invoke a stored procedure, use the `CALL` statement. To invoke a stored function, refer to it in an expression. The function returns a value during expression evaluation. 
 
@@ -512,7 +512,7 @@ The parameter list enclosed within parentheses must always be present. If there 
 
 Each parameter is an `IN` parameter by default. To specify otherwise for a parameter, use the keyword `OUT` or `INOUT` before the parameter name. 
 
-![](I:\githubpage\20180819\yoyoengineer.github.io\assets\img\posts\problems\Snipaste_2018-09-23_18-02-19.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-23_18-02-19.png)
 
 An `IN` parameter passes a value into a procedure. The procedure might modify the value, but the modification is not visible to the caller when the procedure returns. An `OUT` parameter passes a value from the procedure back to the caller. Its initial value is `NULL` within the procedure, and its value is visible to the caller when the procedure returns. An `INOUT` parameter is initialized by the caller, can be modified by the procedure, and any change made by the procedure is visible to the caller when the procedure returns. 
 
@@ -543,39 +543,39 @@ Linux创建符号链接命令是`ln`,也即“link”的缩写，并加上“-s�
 
 虽然我们可以通过符号链接来读，写和执行文件，但这完全不代表符号链接和源文件是同一个文件，源文件和其符号链接文件完全是两个不同的文件。不仅名字不一样，文件的各个属性都不同。同时，符号链接文件的名字非常特殊名字中不仅有符号链接文件名，还有目标文件名。如果符号链接文件所指向的源文件被删除了，那么这个符号链接文件就失效，读取或者执行这个符号链接文件，会显示“没有那个文件或目录”的提示。其名字也会变为醒目的红色，这种情况，我们就称这个符号链接“断裂”了。
 
-![](I:\githubpage\20180819\yoyoengineer.github.io\assets\img\posts\problems\Snipaste_2018-09-23_19-45-32.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-23_19-45-32.png)
 
-![](I:\githubpage\20180819\yoyoengineer.github.io\assets\img\posts\problems\Snipaste_2018-09-23_19-48-31.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-23_19-48-31.png)
 
 
 
-![](I:\githubpage\20180819\yoyoengineer.github.io\assets\img\posts\problems\Snipaste_2018-09-23_20-04-12.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-23_20-04-12.png)
 
-![](I:\githubpage\20180819\yoyoengineer.github.io\assets\img\posts\problems\Snipaste_2018-09-23_20-07-14.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-23_20-07-14.png)
 
-![](I:\githubpage\20180819\yoyoengineer.github.io\assets\img\posts\problems\Snipaste_2018-09-23_20-11-30.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-23_20-11-30.png)
 
 创建硬链接和创建符号链接的命令一样，只不过不需要加上`-s`选项
 
-![](I:\githubpage\20180819\yoyoengineer.github.io\assets\img\posts\problems\Snipaste_2018-09-23_20-15-41.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-23_20-15-41.png)
 
-![](I:\githubpage\20180819\yoyoengineer.github.io\assets\img\posts\problems\Snipaste_2018-09-23_20-13-49.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-23_20-13-49.png)
 
-![](I:\githubpage\20180819\yoyoengineer.github.io\assets\img\posts\problems\Snipaste_2018-09-23_20-26-45.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-23_20-26-45.png)
 
-![](I:\githubpage\20180819\yoyoengineer.github.io\assets\img\posts\problems\Snipaste_2018-09-23_20-31-06.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-23_20-31-06.png)
 
 无论是sample.txt，sample_hl01，还是sample_hl02，本质上是同一个文件，只不过这个文件有多个名字。这一点可以通过他们的`inode-number`来进行观察验证。这三个文件的`inode-number`是一样的，充分说明了这三个文件名本质上就是同一文件。
 
-![](I:\githubpage\20180819\yoyoengineer.github.io\assets\img\posts\problems\Snipaste_2018-09-23_20-34-36.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-23_20-34-36.png)
 
-![](I:\githubpage\20180819\yoyoengineer.github.io\assets\img\posts\problems\Snipaste_2018-09-23_20-40-22.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-23_20-40-22.png)
 
-![](I:\githubpage\20180819\yoyoengineer.github.io\assets\img\posts\problems\Snipaste_2018-09-23_20-41-01.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-23_20-41-01.png)
 
 将源文件删除以后，其他两个硬链接文件仍然可以正常打开，文件属性和内容并无异常，再删除sample_hl02文件，余下的sample_hl01文件，除了文件属性中的硬链接数目变成了1，其他一切仍然正常。我们为sample.txt文件创建了两个硬链接，那么就相当于这个文件在文件系统里有了三个文件名，这三个文件名都指向同一份文件内容，删除了一个文件，只是将某个文件名从文件系统中移除了，我们仍然可以通过余下的文件名来访问这个文件的数据。只要文件还存在着一个文件名，这个文件就一切正常，仍然可以访问。除非将这三个文件都删除。我们才无法通过文件名找到文件inode，进而访问文件数据，文件才算被真正删除掉。
 
-![](I:\githubpage\20180819\yoyoengineer.github.io\assets\img\posts\problems\Snipaste_2018-09-23_20-48-29.png)
+![](/assets/img/posts/problems/Snipaste_2018-09-23_20-48-29.png)
 
 由于inode 仅在特定文件系统内是惟一的，因此硬链接不能够跨越文件系统。符号链接没有上面的限制，具有更大的灵活性，甚至可以跨越不同机器、不同网络对文件进行链接。 
 
