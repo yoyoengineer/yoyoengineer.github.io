@@ -4,6 +4,7 @@ title:  "Problems"
 date:   2018-09-17 11:41:00 +0800
 featured-img: problems
 categories: Problems
+summary: These are some of the problems I encountered while doing exercises, and some related knowledge points.
 ---
 
 ![](/assets/img/posts/problems/Snipaste_2018-09-17_14-57-30.png)
