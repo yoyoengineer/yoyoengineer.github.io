@@ -727,7 +727,7 @@ AND 0011 (decimal 3)
 
 #### 按位取反~
 
-The **bitwise not** (~, also called the ones complement operator) is a unary operator – it only takes one argument (all other bitwise operators are binary operators). Bitwise not produces the opposite of the input bit – a one if the input bit is zero, a zero if the input bit is one.  For example: 
+The **bitwise not** (`~`, also called the ones complement operator) is a unary operator – it only takes one argument (all other bitwise operators are binary operators). Bitwise not produces the opposite of the input bit – a one if the input bit is zero, a zero if the input bit is one.  For example: 
 
 ```
 NOT 0111  (decimal 7)
@@ -741,7 +741,7 @@ NOT 10101011  (decimal 171)
 
 #### 按位或|
 
-The **bitwise or** operator (|) produces a one in the output bit if either input bit is a one and produces a zero only if both input bits are zero.  For example: 
+The **bitwise or** operator `|` produces a one in the output bit if either input bit is a one and produces a zero only if both input bits are zero.  For example: 
 
 ```
    0101 (decimal 5)
@@ -751,7 +751,7 @@ OR 0011 (decimal 3)
 
 #### 异或^
 
-The **bitwise exclusive or**, or xor (^) produces a one in the output bit if one or the other input bit is a one, but not both. For example: 
+The **bitwise exclusive or**, or xor `^` produces a one in the output bit if one or the other input bit is a one, but not both. For example: 
 
 ```
     0101 (decimal 5)
@@ -791,9 +791,9 @@ int main (){
 
 ### 移位运算(Shift operators )
 
-The shift operators also manipulate bits. The left-shift operator (<<) produces the operand to the left of the operator shifted to the left by the number of bits specified after the operator. The right-shift operator (>>) produces the operand to the left of the operator shifted to the right by the number of bits specified after the operator. **If the value after the shift operator is greater than the number of bits in the left-hand operand, the result is undefined. If the left-hand operand is unsigned, the right shift is a logical shift so the upper bits will be filled with zeros. If the left-hand operand is signed, the right shift may or may not be a logical shift (that is, the behavior is undefined).**  
+The shift operators also manipulate bits. The left-shift operator `<<` produces the operand to the left of the operator shifted to the left by the number of bits specified after the operator. The right-shift operator `>>` produces the operand to the left of the operator shifted to the right by the number of bits specified after the operator. **If the value after the shift operator is greater than the number of bits in the left-hand operand, the result is undefined. If the left-hand operand is unsigned, the right shift is a logical shift so the upper bits will be filled with zeros. If the left-hand operand is signed, the right shift may or may not be a logical shift (that is, the behavior is undefined).**  
 
-Shifts can be combined with the equal sign (<<= and >>=). The left value is replaced by the left value shifted by the right value.  
+Shifts can be combined with the equal sign (`<<=` and `>>=`). The left value is replaced by the left value shifted by the right value.  
 
 ```c
 #include <stdio.h>
