@@ -759,7 +759,7 @@ XOR 0011 (decimal 3)
   = 0110 (decimal 6)
 ```
 
-Bitwise operators can be combined with the = sign to unite the operation and assignment: &=, |=, and ^= are all legitimate operations (since ~ is a unary operator it cannot be combined with the = sign).  
+Bitwise operators can be combined with the `=` sign to unite the operation and assignment: `&=`, `|=`, and `^=` are all legitimate operations (since `~` is a unary operator it cannot be combined with the `=` sign).  
 
 对一个变量用同一个值异或两次，等于什么也没做
 
