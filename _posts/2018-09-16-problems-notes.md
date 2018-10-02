@@ -581,3 +581,292 @@ Linux创建符号链接命令是`ln`,也即“link”的缩写，并加上“-s�
 由于inode 仅在特定文件系统内是惟一的，因此硬链接不能够跨越文件系统。符号链接没有上面的限制，具有更大的灵活性，甚至可以跨越不同机器、不同网络对文件进行链接。 
 
 我们不推荐为目录创建硬链接，容易造成目录遍历死循环，而且不能夸硬盘分区创建硬链接，因为在不同的分区中，文件的`inode-number`不再是唯一的了。
+
+### http会话的四个过程
+
+1.建立tcp连接
+
+2.发出请求文档
+
+3.发出响应文档
+
+4.释放tcp链接
+
+### 进程调度
+
+![](/assets/img/posts/problems/Snipaste_2018-09-23_21-04-35.png)
+
+Java 中case后必须跟常数，不可以跟变量。
+
+![](/assets/img/posts/problems/Snipaste_2018-09-26_22-02-08.png)
+
+You don't have to provide any constructors for your class, but you must be careful when doing this. The compiler automatically provides a no-argument, default constructor for any class without constructors. This default constructor will call the no-argument constructor of the superclass. In this situation, the compiler will complain if the superclass doesn't have a no-argument constructor so you must verify that it does. If your class has no explicit superclass, then it has an implicit superclass of `Object`, which *does* have a no-argument constructor. 
+
+If you specified a constructor explicitly (as in `Parent`), the Java compiler will *not* create a no-argument constructor for you.
+
+If you didn't specify a constructor explicitly (as in `Child`) the Java compiler will create a no-argument constructor for you like this:
+
+```java
+public Child() {
+    super();
+}
+```
+
+That's trying to call the superclass no-argument  constructor - so it has to exist. You have two options: 
+
+Provide a no-argument constructor explicitly in `Parent`
+
+Provide a no-argument constructor explicitly in `Child` which explicitly calls the base class constructor with an appropriate `int` argument like this:
+
+```java
+public Child(int variable) {
+    super(variable);
+}
+```
+
+![](/assets/img/posts/problems/Snipaste_2018-09-27_10-44-12.png)
+
+![](/assets/img/posts/problems/Snipaste_2018-09-27_10-45-24.png)
+
+### 页面置换
+
+#### FIFO
+
+![](/assets/img/posts/problems/Snipaste_2018-09-28_13-48-28.png)
+
+![](/assets/img/posts/problems/Snipaste_2018-09-28_13-49-21.png)
+
+#### Belady异常
+
+![](/assets/img/posts/problems/Snipaste_2018-09-28_13-51-53.png)
+
+### 最优置换算法OPT
+
+![](/assets/img/posts/problems/Snipaste_2018-09-28_13-55-40.png)
+
+![](/assets/img/posts/problems/Snipaste_2018-09-28_13-56-30.png)
+
+### 最近最少使用算法LRU
+
+![](/assets/img/posts/problems/Snipaste_2018-09-28_13-58-16.png)
+
+![](/assets/img/posts/problems/Snipaste_2018-09-28_13-59-14.png)
+
+### 数据结构
+
+根据数据元素之间关系的不同特性,通常有下列四种基本结构：
+
+1.  **集合** 结构中的数据元素之间除了“同属于一个集合”的关系外，别无其他关系。 
+2.  **线性结构** 结构中的数据元素之间存在一个对一个的关系。 
+3. **树状结构** 结构中的数据元素之间存在一个对多个的关系。 
+4.  **图状结构或网状结构** 结构中的数据元素之间存在多个对多个的关系。 
+
+上述数据结构的定义是对操作对象的一种数学描述，是从操作对象抽象出来的数学模型。结构定义中的“关系”描述的是数据元素的**逻辑关系**，因此又称为数据的逻辑结构。
+
+数据元素之间的关系在计算机中又有两种不同的表示方法 ：**顺序映像**和**非顺序映像**，并由此得到两种不同的存储结构：**顺序存储结构**和**链式存储结构**。
+
+
+
+Redis supports 5 types of data types(https://redis.io/topics/data-types):
+
+- Strings
+- Lists
+- Sets
+- Hashes
+-  Sorted sets
+
+
+
+```java
+public class Parent {
+
+    {
+        System.out.println("parent");
+    }
+
+    static {
+        System.out.println("parent static");
+    }
+
+    public Parent() {
+        System.out.println("parent constructor");
+    }
+}
+```
+
+```java
+public class Sub extends Parent {
+
+    {
+        System.out.println("sub");
+    }
+
+    public Sub() {
+        System.out.println("sub constructor");
+    }
+
+    static {
+        System.out.println("sub static");
+    }
+}
+```
+
+![](/assets/img/posts/problems/Snipaste_2018-09-28_21-54-47.png)
+
+### 位运算（Bitwise operation）
+
+#### 按位与&
+
+A **bitwise AND** takes two equal-length binary representations and performs the logical AND operation on each pair of the corresponding bits, which is equivalent to multiplying them. Thus, if both bits in the compared position are 1, the bit in the resulting binary representation is 1 (1 × 1 = 1); otherwise, the result is 0 (1 × 0 = 0 and 0 × 0 = 0). For example: 
+
+```
+    0101 (decimal 5)
+AND 0011 (decimal 3)
+  = 0001 (decimal 1)
+```
+
+#### 按位取反~
+
+The **bitwise not** (~, also called the ones complement operator) is a unary operator – it only takes one argument (all other bitwise operators are binary operators). Bitwise not produces the opposite of the input bit – a one if the input bit is zero, a zero if the input bit is one.  For example: 
+
+```
+NOT 0111  (decimal 7)
+  = 1000  (decimal 8)
+```
+
+```
+NOT 10101011  (decimal 171)
+  = 01010100  (decimal 84)
+```
+
+#### 按位或|
+
+The **bitwise or** operator (|) produces a one in the output bit if either input bit is a one and produces a zero only if both input bits are zero.  For example: 
+
+```
+   0101 (decimal 5)
+OR 0011 (decimal 3)
+ = 0111 (decimal 7)
+```
+
+#### 异或^
+
+The **bitwise exclusive or**, or xor (^) produces a one in the output bit if one or the other input bit is a one, but not both. For example: 
+
+```
+    0101 (decimal 5)
+XOR 0011 (decimal 3)
+  = 0110 (decimal 6)
+```
+
+Bitwise operators can be combined with the = sign to unite the operation and assignment: &=, |=, and ^= are all legitimate operations (since ~ is a unary operator it cannot be combined with the = sign).  
+
+对一个变量用同一个值异或两次，等于什么也没做
+
+X^Y^Y -> X
+
+```c++
+#include <iostream>
+#include <cstring>
+using namespace std;
+ 
+int main (){
+	
+	char str[] = "Hello World!";
+	string cpy = "";
+	int i = 0;
+	for(;i < strlen(str); i++){
+		cpy += str[i]^3;
+	}
+	cout << cpy <<endl;
+	for(i = 0;i < cpy.size(); i++){
+		cpy[i] ^= 3;
+	}
+	cout << cpy <<endl;
+    return 0;
+} 
+```
+
+![](/assets/img/posts/problems/Snipaste_2018-09-29_20-20-08.png)
+
+### 移位运算(Shift operators )
+
+The shift operators also manipulate bits. The left-shift operator (<<) produces the operand to the left of the operator shifted to the left by the number of bits specified after the operator. The right-shift operator (>>) produces the operand to the left of the operator shifted to the right by the number of bits specified after the operator. **If the value after the shift operator is greater than the number of bits in the left-hand operand, the result is undefined. If the left-hand operand is unsigned, the right shift is a logical shift so the upper bits will be filled with zeros. If the left-hand operand is signed, the right shift may or may not be a logical shift (that is, the behavior is undefined).**  
+
+Shifts can be combined with the equal sign (<<= and >>=). The left value is replaced by the left value shifted by the right value.  
+
+```c
+#include <stdio.h>
+int main(void){
+	unsigned char c = 0xA5;
+	printf(" c=%hhx\n",c);
+	printf("c<<2=%x\n",c<<2);
+	printf(" c=%d\n",c);
+	printf("c<<2=%d\n",c<<2);
+	return 0;
+} 
+```
+
+![](/assets/img/posts/problems/Snipaste_2018-09-29_21-18-34.png)
+
+如果我们将一个数向左移n为，等价于它乘2的n次方。
+
+![](/assets/img/posts/problems/Snipaste_2018-09-29_21-44-40.png)
+
+```c
+#include <stdio.h>
+int main(){
+	int a = 0x80000000;
+	unsigned int b = 0x80000000;
+	printf("a=%d\n", a);
+	printf("b=%u\n", b);
+	printf("a>>1=%d\n", a>>1);
+	printf("b>>1=%u\n", b>>1);
+	printf("a<<1=%d\n", a<<1);
+	printf("b<<1=%u\n", b<<1);	
+	return 0;
+}
+```
+
+![](/assets/img/posts/problems/Snipaste_2018-09-29_22-11-05.png)
+
+对于有符号整形，正数右移左边补一，左移右边补零。负数左移右移都补零。
+
+```c
+#include <stdio.h>
+int main(){
+	int a = 0x80000000;
+	int b = 0x40000000;
+	int c = 0x00000001;
+	int d = 0x00000000;
+	int e = 0x80000001;
+	int f = 0x80000000;
+	printf("    a=%d\n", a);
+	printf("    a=%x\n", a);
+	printf("a>>21=%x\n", a>>21);
+	printf("a>>21=%d\n", a>>21);
+	printf("    b=%d\n", b);
+	printf("    b=%x\n", b);
+	printf("b>>21=%x\n", b>>21);
+	printf("b>>21=%d\n", b>>21);	
+	printf("    c=%d\n", c);
+	printf("    c=%x\n", c);
+	printf("c<<11=%x\n", c<<11);
+	printf("c<<11=%d\n", c<<11);
+	printf("    d=%d\n", d);
+	printf("    d=%x\n", d);
+	printf("d<<11=%x\n", d<<11);
+	printf("d<<11=%d\n", d<<11);
+	printf("    e=%d\n", e);
+	printf("    e=%x\n", e);
+	printf("e<<11=%x\n", e<<11);
+	printf("e<<11=%d\n", e<<11);
+	printf("    f=%d\n", f);
+	printf("    f=%x\n", f);
+	printf("f<<11=%x\n", f<<11);
+	printf("f<<11=%d\n", f<<11);
+	return 0;
+}
+```
+
+![](/assets/img/posts/problems/Snipaste_2018-09-30_21-51-11.png)
