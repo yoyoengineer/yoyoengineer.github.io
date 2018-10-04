@@ -36,5 +36,4 @@ When I'm trying to use an application, I encountered this problem (*The program 
 
 Download Visual C++ Redistributable for Visual Studio 2015 from Microsoft
 
-[Visual C++ Redistributable for Visual Studio 2015]: https://www.microsoft.com/en-in/download/details.aspx?id=48145
-
+[Visual C++ Redistributable for Visual Studio 2015](https://www.microsoft.com/en-in/download/details.aspx?id=48145)
