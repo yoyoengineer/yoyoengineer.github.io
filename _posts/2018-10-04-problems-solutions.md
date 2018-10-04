@@ -20,11 +20,11 @@ First, sign in the github. And then do as the following steps:
 3. Authorized OAuth Apps
 4. revoke the access
 
-![](G:\notes\yoyoengineer.github.io\assets\img\posts\problems\Snipaste_2018-10-04_16-05-57.png)
+![](/assets/img/posts/problems/Snipaste_2018-10-04_16-05-57.png)
 
-![](G:\notes\yoyoengineer.github.io\assets\img\posts\problems\Snipaste_2018-10-04_16-24-13.png)
+![](/assets/img/posts/problems/Snipaste_2018-10-04_16-24-13.png)
 
-![](G:\notes\yoyoengineer.github.io\assets\img\posts\problems\Snipaste_2018-10-04_16-16-39.png)
+![](/assets/img/posts/problems/Snipaste_2018-10-04_16-16-39.png)
 
 
 
