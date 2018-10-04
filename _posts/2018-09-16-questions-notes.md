@@ -1,10 +1,10 @@
 ---
 layout: post
-title:  "Problems"
+title:  "Questions"
 date:   2018-09-17 11:41:00 +0800
-featured-img: problems
-categories: Problems
-summary: These are some of the problems I encountered while doing exercises, and some related knowledge points.
+featured-img: questions
+categories: Questions
+summary: These are some of the questions I encountered while doing exercises, and some related knowledge points.
 ---
 
 ![](/assets/img/posts/problems/Snipaste_2018-09-17_14-57-30.png)
@@ -123,9 +123,9 @@ For Example:
 
 ```c
 /* 快速排序 */
- 
+
 ElementType Median3( ElementType A[], int Left, int Right )
-{ 
+{
     int Center = (Left+Right) / 2;
     if ( A[Left] > A[Center] )
         Swap( &A[Left], &A[Center] );
@@ -138,13 +138,13 @@ ElementType Median3( ElementType A[], int Left, int Right )
     /* 只需要考虑A[Left+1] … A[Right-2] */
     return  A[Right-1];  /* 返回基准Pivot */
 }
- 
+
 void Qsort( ElementType A[], int Left, int Right )
-{ /* 核心递归函数 */ 
+{ /* 核心递归函数 */
      int Pivot, Cutoff, Low, High;
-       
+
      if ( Cutoff <= Right-Left ) { /* 如果序列元素充分多，进入快排 */
-          Pivot = Median3( A, Left, Right ); /* 选基准 */ 
+          Pivot = Median3( A, Left, Right ); /* 选基准 */
           Low = Left; High = Right-1;
           while (1) { /*将序列中比基准小的移到基准左边，大的移到右边*/
                while ( A[++Low] < Pivot ) ;
@@ -152,13 +152,13 @@ void Qsort( ElementType A[], int Left, int Right )
                if ( Low < High ) Swap( &A[Low], &A[High] );
                else break;
           }
-          Swap( &A[Low], &A[Right-1] );   /* 将基准换到正确的位置 */ 
-          Qsort( A, Left, Low-1 );    /* 递归解决左边 */ 
+          Swap( &A[Low], &A[Right-1] );   /* 将基准换到正确的位置 */
+          Qsort( A, Left, Low-1 );    /* 递归解决左边 */
           Qsort( A, Low+1, Right );   /* 递归解决右边 */  
      }
-     else InsertionSort( A+Left, Right-Left+1 ); /* 元素太少，用简单排序 */ 
+     else InsertionSort( A+Left, Right-Left+1 ); /* 元素太少，用简单排序 */
 }
- 
+
 void QuickSort( ElementType A[], int N )
 { /* 统一接口 */
      Qsort( A, 0, N-1 );
@@ -178,18 +178,18 @@ struct HNode {
 };
 typedef Heap MaxHeap; /* 最大堆 */
 typedef Heap MinHeap; /* 最小堆 */
- 
+
 #define MAXDATA 1000  /* 该值应根据具体情况定义为大于堆中所有可能元素的值 */
- 
+
 MaxHeap CreateHeap( int MaxSize )
 { /* 创建容量为MaxSize的空的最大堆 */
- 
+
     MaxHeap H = (MaxHeap)malloc(sizeof(struct HNode));
     H->Data = (ElementType *)malloc((MaxSize+1)*sizeof(ElementType));
     H->Size = 0;
     H->Capacity = MaxSize;
     H->Data[0] = MAXDATA; /* 定义"哨兵"为大于堆中所有可能元素的值*/
- 
+
     return H;
 }
 ```
@@ -221,8 +221,8 @@ bool IsFull( MaxHeap H )
 bool Insert( MaxHeap H, ElementType X )
 { /* 将元素X插入最大堆H，其中H->Data[0]已经定义为哨兵 */
     int i;
-  
-    if ( IsFull(H) ) { 
+
+    if ( IsFull(H) ) {
         printf("最大堆已满");
         return false;
     }
@@ -256,12 +256,12 @@ ElementType DeleteMax( MaxHeap H )
 { /* 从最大堆H中取出键值为最大的元素，并删除一个结点 */
     int Parent, Child;
     ElementType MaxItem, X;
- 
+
     if ( IsEmpty(H) ) {
         printf("最大堆已为空");
         return ERROR;
     }
- 
+
     MaxItem = H->Data[1]; /* 取出根结点存放的最大值 */
     /* 用最大堆中最后一个元素从根结点开始向上过滤下层结点 */
     X = H->Data[H->Size--]; /* 注意当前堆的规模要减小 */
@@ -274,7 +274,7 @@ ElementType DeleteMax( MaxHeap H )
             H->Data[Parent] = H->Data[Child];
     }
     H->Data[Parent] = X;
- 
+
     return MaxItem;
 }
 ```
@@ -303,7 +303,7 @@ void PercDown( MaxHeap H, int p )
 { /* 下滤：将H中以H->Data[p]为根的子堆调整为最大堆 */
     int Parent, Child;
     ElementType X;
- 
+
     X = H->Data[p]; /* 取出根结点存放的值 */
     for( Parent=p; Parent*2<=H->Size; Parent=Child ) {
         Child = Parent * 2;
@@ -315,13 +315,13 @@ void PercDown( MaxHeap H, int p )
     }
     H->Data[Parent] = X;
 }
- 
+
 void BuildHeap( MaxHeap H )
 { /* 调整H->Data[]中的元素，使满足最大堆的有序性  */
   /* 这里假设所有H->Size个元素已经存在H->Data[]中 */
- 
+
     int i;
- 
+
     /* 从最后一个结点的父节点开始，到根结点1 */
     for( i = H->Size/2; i>0; i-- )
         PercDown( H, i );
@@ -359,13 +359,13 @@ void Swap( ElementType *a, ElementType *b )
 {
      ElementType t = *a; *a = *b; *b = t;
 }
-  
+
 void PercDown( ElementType A[], int p, int N )
 { /* 改编代码4.24的PercDown( MaxHeap H, int p )    */
   /* 将N个元素的数组中以A[p]为根的子堆调整为最大堆 */
     int Parent, Child;
     ElementType X;
- 
+
     X = A[p]; /* 取出根结点存放的值 */
     for( Parent=p; (Parent*2+1)<N; Parent=Child ) {
         Child = Parent * 2 + 1;
@@ -377,14 +377,14 @@ void PercDown( ElementType A[], int p, int N )
     }
     A[Parent] = X;
 }
- 
-void HeapSort( ElementType A[], int N ) 
+
+void HeapSort( ElementType A[], int N )
 { /* 堆排序 */
      int i;
-       
+
      for ( i=N/2-1; i>=0; i-- )/* 建立最大堆 */
          PercDown( A, i, N );
-      
+
      for ( i=N-1; i>0; i-- ) {
          /* 删除最大堆顶 */
          Swap( &A[0], &A[i] ); /* 见代码7.1 */
@@ -479,7 +479,7 @@ TCP同样采用流水线机制以及累计确认机制。但和GBN不一样的�
 
 ![](/assets/img/posts/problems/Snipaste_2018-09-20_11-37-24.png)![](/assets/img/posts/problems/Snipaste_2018-09-20_13-54-50.png)
 
-java中，方法重写时，访问修饰符的限制一定要大于等于被重写方法的访问修饰符，子类中的方法与父类中的方法具有相同的方法名、返回类型和参数表 
+java中，方法重写时，访问修饰符的限制一定要大于等于被重写方法的访问修饰符，子类中的方法与父类中的方法具有相同的方法名、返回类型和参数表
 
 
 
@@ -503,23 +503,23 @@ java中，方法重写时，访问修饰符的限制一定要大于等于被重�
 
 ![](/assets/img/posts/problems/Snipaste_2018-09-23_16-54-28.png)
 
-To invoke a stored procedure, use the `CALL` statement. To invoke a stored function, refer to it in an expression. The function returns a value during expression evaluation. 
+To invoke a stored procedure, use the `CALL` statement. To invoke a stored function, refer to it in an expression. The function returns a value during expression evaluation.
 
 `CREATE PROCEDURE` and `CREATE FUNCTION` require the `CREATE ROUTINE` privilege. They might also require the `SUPER` privilege, depending on the `DEFINER` value, as described later in this section. If binary logging is enabled, `CREATE FUNCTION` might require the SUPER privilege.
 
-By default, MySQL automatically grants the `ALTER ROUTINE` and `EXECUTE` privileges to the routine creator. This behavior can be changed by disabling the `automatic_sp_privileges` system variable. 
+By default, MySQL automatically grants the `ALTER ROUTINE` and `EXECUTE` privileges to the routine creator. This behavior can be changed by disabling the `automatic_sp_privileges` system variable.
 
-The parameter list enclosed within parentheses must always be present. If there are no parameters, an empty parameter list of `()` should be used. Parameter names are not case sensitive. 
+The parameter list enclosed within parentheses must always be present. If there are no parameters, an empty parameter list of `()` should be used. Parameter names are not case sensitive.
 
-Each parameter is an `IN` parameter by default. To specify otherwise for a parameter, use the keyword `OUT` or `INOUT` before the parameter name. 
+Each parameter is an `IN` parameter by default. To specify otherwise for a parameter, use the keyword `OUT` or `INOUT` before the parameter name.
 
 ![](/assets/img/posts/problems/Snipaste_2018-09-23_18-02-19.png)
 
-An `IN` parameter passes a value into a procedure. The procedure might modify the value, but the modification is not visible to the caller when the procedure returns. An `OUT` parameter passes a value from the procedure back to the caller. Its initial value is `NULL` within the procedure, and its value is visible to the caller when the procedure returns. An `INOUT` parameter is initialized by the caller, can be modified by the procedure, and any change made by the procedure is visible to the caller when the procedure returns. 
+An `IN` parameter passes a value into a procedure. The procedure might modify the value, but the modification is not visible to the caller when the procedure returns. An `OUT` parameter passes a value from the procedure back to the caller. Its initial value is `NULL` within the procedure, and its value is visible to the caller when the procedure returns. An `INOUT` parameter is initialized by the caller, can be modified by the procedure, and any change made by the procedure is visible to the caller when the procedure returns.
 
-For each `OUT` or `INOUT` parameter, pass a user-defined variable in the `CALL` statement that invokes the procedure so that you can obtain its value when the procedure returns. If you are calling the procedure from within another stored procedure or function, you can also pass a routine parameter or local routine variable as an `OUT` or `INOUT` parameter. If you are calling the procedure from within a trigger, you can also pass `NEW.col_name` as an `OUT` or `INOUT` parameter. 
+For each `OUT` or `INOUT` parameter, pass a user-defined variable in the `CALL` statement that invokes the procedure so that you can obtain its value when the procedure returns. If you are calling the procedure from within another stored procedure or function, you can also pass a routine parameter or local routine variable as an `OUT` or `INOUT` parameter. If you are calling the procedure from within a trigger, you can also pass `NEW.col_name` as an `OUT` or `INOUT` parameter.
 
-The following example shows a simple stored procedure that uses an OUT parameter: 
+The following example shows a simple stored procedure that uses an OUT parameter:
 
 ```mysql
 mysql> delimiter //
@@ -578,7 +578,7 @@ Linux创建符号链接命令是`ln`,也即“link”的缩写，并加上“-s�
 
 ![](/assets/img/posts/problems/Snipaste_2018-09-23_20-48-29.png)
 
-由于inode 仅在特定文件系统内是惟一的，因此硬链接不能够跨越文件系统。符号链接没有上面的限制，具有更大的灵活性，甚至可以跨越不同机器、不同网络对文件进行链接。 
+由于inode 仅在特定文件系统内是惟一的，因此硬链接不能够跨越文件系统。符号链接没有上面的限制，具有更大的灵活性，甚至可以跨越不同机器、不同网络对文件进行链接。
 
 我们不推荐为目录创建硬链接，容易造成目录遍历死循环，而且不能夸硬盘分区创建硬链接，因为在不同的分区中，文件的`inode-number`不再是唯一的了。
 
@@ -600,7 +600,7 @@ Java 中case后必须跟常数，不可以跟变量。
 
 ![](/assets/img/posts/problems/Snipaste_2018-09-26_22-02-08.png)
 
-You don't have to provide any constructors for your class, but you must be careful when doing this. The compiler automatically provides a no-argument, default constructor for any class without constructors. This default constructor will call the no-argument constructor of the superclass. In this situation, the compiler will complain if the superclass doesn't have a no-argument constructor so you must verify that it does. If your class has no explicit superclass, then it has an implicit superclass of `Object`, which *does* have a no-argument constructor. 
+You don't have to provide any constructors for your class, but you must be careful when doing this. The compiler automatically provides a no-argument, default constructor for any class without constructors. This default constructor will call the no-argument constructor of the superclass. In this situation, the compiler will complain if the superclass doesn't have a no-argument constructor so you must verify that it does. If your class has no explicit superclass, then it has an implicit superclass of `Object`, which *does* have a no-argument constructor.
 
 If you specified a constructor explicitly (as in `Parent`), the Java compiler will *not* create a no-argument constructor for you.
 
@@ -612,7 +612,7 @@ public Child() {
 }
 ```
 
-That's trying to call the superclass no-argument  constructor - so it has to exist. You have two options: 
+That's trying to call the superclass no-argument  constructor - so it has to exist. You have two options:
 
 Provide a no-argument constructor explicitly in `Parent`
 
@@ -656,10 +656,10 @@ public Child(int variable) {
 
 根据数据元素之间关系的不同特性,通常有下列四种基本结构：
 
-1.  **集合** 结构中的数据元素之间除了“同属于一个集合”的关系外，别无其他关系。 
-2.  **线性结构** 结构中的数据元素之间存在一个对一个的关系。 
-3. **树状结构** 结构中的数据元素之间存在一个对多个的关系。 
-4.  **图状结构或网状结构** 结构中的数据元素之间存在多个对多个的关系。 
+1.  **集合** 结构中的数据元素之间除了“同属于一个集合”的关系外，别无其他关系。
+2.  **线性结构** 结构中的数据元素之间存在一个对一个的关系。
+3. **树状结构** 结构中的数据元素之间存在一个对多个的关系。
+4.  **图状结构或网状结构** 结构中的数据元素之间存在多个对多个的关系。
 
 上述数据结构的定义是对操作对象的一种数学描述，是从操作对象抽象出来的数学模型。结构定义中的“关系”描述的是数据元素的**逻辑关系**，因此又称为数据的逻辑结构。
 
@@ -717,7 +717,7 @@ public class Sub extends Parent {
 
 #### 按位与&
 
-A **bitwise AND** takes two equal-length binary representations and performs the logical AND operation on each pair of the corresponding bits, which is equivalent to multiplying them. Thus, if both bits in the compared position are 1, the bit in the resulting binary representation is 1 (1 × 1 = 1); otherwise, the result is 0 (1 × 0 = 0 and 0 × 0 = 0). For example: 
+A **bitwise AND** takes two equal-length binary representations and performs the logical AND operation on each pair of the corresponding bits, which is equivalent to multiplying them. Thus, if both bits in the compared position are 1, the bit in the resulting binary representation is 1 (1 × 1 = 1); otherwise, the result is 0 (1 × 0 = 0 and 0 × 0 = 0). For example:
 
 ```
     0101 (decimal 5)
@@ -727,7 +727,7 @@ AND 0011 (decimal 3)
 
 #### 按位取反~
 
-The **bitwise not** (`~`, also called the ones complement operator) is a unary operator – it only takes one argument (all other bitwise operators are binary operators). Bitwise not produces the opposite of the input bit – a one if the input bit is zero, a zero if the input bit is one.  For example: 
+The **bitwise not** (`~`, also called the ones complement operator) is a unary operator – it only takes one argument (all other bitwise operators are binary operators). Bitwise not produces the opposite of the input bit – a one if the input bit is zero, a zero if the input bit is one.  For example:
 
 ```
 NOT 0111  (decimal 7)
@@ -741,7 +741,7 @@ NOT 10101011  (decimal 171)
 
 #### 按位或|
 
-The **bitwise or** operator `|` produces a one in the output bit if either input bit is a one and produces a zero only if both input bits are zero.  For example: 
+The **bitwise or** operator `|` produces a one in the output bit if either input bit is a one and produces a zero only if both input bits are zero.  For example:
 
 ```
    0101 (decimal 5)
@@ -751,7 +751,7 @@ OR 0011 (decimal 3)
 
 #### 异或^
 
-The **bitwise exclusive or**, or xor `^` produces a one in the output bit if one or the other input bit is a one, but not both. For example: 
+The **bitwise exclusive or**, or xor `^` produces a one in the output bit if one or the other input bit is a one, but not both. For example:
 
 ```
     0101 (decimal 5)
@@ -769,9 +769,9 @@ X^Y^Y -> X
 #include <iostream>
 #include <cstring>
 using namespace std;
- 
+
 int main (){
-	
+
 	char str[] = "Hello World!";
 	string cpy = "";
 	int i = 0;
@@ -784,7 +784,7 @@ int main (){
 	}
 	cout << cpy <<endl;
     return 0;
-} 
+}
 ```
 
 ![](/assets/img/posts/problems/Snipaste_2018-09-29_20-20-08.png)
@@ -804,7 +804,7 @@ int main(void){
 	printf(" c=%d\n",c);
 	printf("c<<2=%d\n",c<<2);
 	return 0;
-} 
+}
 ```
 
 ![](/assets/img/posts/problems/Snipaste_2018-09-29_21-18-34.png)
@@ -823,7 +823,7 @@ int main(){
 	printf("a>>1=%d\n", a>>1);
 	printf("b>>1=%u\n", b>>1);
 	printf("a<<1=%d\n", a<<1);
-	printf("b<<1=%u\n", b<<1);	
+	printf("b<<1=%u\n", b<<1);
 	return 0;
 }
 ```
@@ -848,7 +848,7 @@ int main(){
 	printf("    b=%d\n", b);
 	printf("    b=%x\n", b);
 	printf("b>>21=%x\n", b>>21);
-	printf("b>>21=%d\n", b>>21);	
+	printf("b>>21=%d\n", b>>21);
 	printf("    c=%d\n", c);
 	printf("    c=%x\n", c);
 	printf("c<<11=%x\n", c<<11);
