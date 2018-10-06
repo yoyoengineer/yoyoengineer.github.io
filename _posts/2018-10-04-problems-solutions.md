@@ -7,6 +7,26 @@ categories: Problems
 summary: These are some of the problems I encountered in my daily life and the corresponding solutions.
 ---
 
+### Configure the Windows firewall to allow pings
+
+If you have a firewall enabled in Windows, ping requests are blocked by default. This prevents the University Information Security Office (UISO) vulnerability scanners from functioning.
+
+#### solution
+
+To configure your firewall to allow pings, follow the appropriate instructions below.
+
+1. Search for `Windows Firewall`, and click to open it.
+2. Click Advanced Settings on the left.
+3. From the left pane of the resulting window, click Inbound Rules.
+4. In the right pane, find the rules titled File and Printer Sharing (Echo Request - ICMPv4-In).
+5. Right-click each rule and choose Enable Rule.
+
+![](/assets/img/posts/problems/Snipaste_2018-10-03_17-53-57.PNG)
+
+![](/assets/img/posts/problems/Snipaste_2018-10-03_17-54-00.PNG)
+
+![](/assets/img/posts/problems/Snipaste_2018-10-03_17-55-00.PNG)
+
 ### Revoke the access token to github
 
 Sometimes, I will grant the access to my github to some applications like atom. But later, maybe I want to revoke the access.
