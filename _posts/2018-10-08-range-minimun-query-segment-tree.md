@@ -10,6 +10,7 @@ This article is Only about the range minimum query.  Of course, the segment tree
 
 1. [https://www.geeksforgeeks.org/segment-tree-set-1-sum-of-given-range/](https://www.geeksforgeeks.org/segment-tree-set-1-sum-of-given-range/)
 2. [https://www.geeksforgeeks.org/segment-tree-set-1-range-minimum-query/](https://www.geeksforgeeks.org/segment-tree-set-1-range-minimum-query/)
+3. [https://www.geeksforgeeks.org/lazy-propagation-in-segment-tree/](https://www.geeksforgeeks.org/lazy-propagation-in-segment-tree/)
 
 The example of the range minimum query is shown below:
 
@@ -56,6 +57,64 @@ Then we can represent the corresponding segment tree in another array.
 ![](/assets/img/posts/segment_tree/Snipaste_2018-10-08_18-28-13.png)
 
 The rest of the content is well explained in the [website](https://www.geeksforgeeks.org/segment-tree-set-1-range-minimum-query/) I mentioned earlier, so I won't go into details.
+
+**Lazy Propagation Segment Tree**
+
+lazy propagation is an optimization technique of segment tree.
+
+Let's take an example, first we create a minimum segment tree.
+
+![](/assets/img/posts/segment_tree/Snipaste_2018-10-09_09-49-38.png)
+
+for lazy propagation, we created an another array of the same size as the segment tree.
+
+![](/assets/img/posts/segment_tree/Snipaste_2018-10-09_09-58-57.png)
+
+Next, what we are going to do is applying these operations and showing how lazy propagation works.
+
+![](/assets/img/posts/segment_tree/Snipaste_2018-10-09_10-43-45.png)
+
+For the first operation, first we come to the root node. and we check whether the value of it is up-to-date. because the value of the lazy tree's root node is 0. so it means the value of the root node of the segment tree is up-to-date. And owing to [0,3] does not totally overlap [0,7], it's a partial overlap. so the procedure continues in sub-trees.
+
+[0,3] has an total overlap on the interval of the second node [0,3], so now what we are going to do is incrementing the value of this node by 3. And it becomes 2. Next Instead of going down,  we just stop here and update the value of the corresponding children of the lazy tree for the lazy propagation. So we increment the value of the children by 3.
+
+![](/assets/img/posts/segment_tree/Snipaste_2018-10-09_11-31-58.png)
+
+Then we go to the third node of the segment tree, the value 1 of it is up-to-date, because the corresponding value of the lazy tree is 0. And [0,3] as well as [0,7] don't have overlap, so we go back here. Next we update the value of the parent node(root node) with the minimum of 2 and 1.
+
+![](/assets/img/posts/segment_tree/Snipaste_2018-10-09_11-51-56.png)
+
+After the second operation is performed, the two trees become the same as shown in the figure below.
+
+![](/assets/img/posts/segment_tree/Snipaste_2018-10-09_11-57-32.png)
+
+Then we are going to perform the third operation. First because [0,0] partially overlaps [0,7] and it's up-to-date, so we go on. And the situation of the second node is the same as the root, so we reach the children of the second node. But the values of it's children is not up-to-date, because the values of the corresponding node on the lazy tree is not 0. So what we are going to do is first updating the values of the two nodes, we'll add 4 to them. Thence they'll become 3 and 5 respectively. Moreover, the 4 is propagated to the children of the forth node and fifth node on the lazy tree.
+
+![](/assets/img/posts/segment_tree/Snipaste_2018-10-09_13-39-29.png)
+
+For the forth node, [0,0] partially overlaps [0,1], so we continue to go down. And the value of left child is not up-to-date, so we update it.
+
+![](/assets/img/posts/segment_tree/Snipaste_2018-10-09_14-31-30.png)
+
+Then the third operation is to increment [0,0] by 2. So, we add 2 to the node.
+
+![](/assets/img/posts/segment_tree/Snipaste_2018-10-09_14-29-07.png)
+
+After that, we go back and to the right child, and update the value of it.
+
+![](/assets/img/posts/segment_tree/Snipaste_2018-10-09_14-45-50.png)
+
+Then [0,0] does not overlap [1,1], therefore we will not increment it by 2. Next we return the minimum of 5 and 6 and update the parent value.
+
+![](/assets/img/posts/segment_tree/Snipaste_2018-10-09_14-54-48.png)
+
+Then, let's go back and to the fifth node. first we update it's value. Next, Because [0,0] does not overlap [2,3], we go back and return the minimum of 5 and 5. And we update the parent value. [0,0] also does not overlap the interval of the third node, so we also just go back. the minimum of 1 and 5 is 1, so the root value is still 1.
+
+![](/assets/img/posts/segment_tree/Snipaste_2018-10-09_15-09-44.png)
+
+![](/assets/img/posts/segment_tree/Snipaste_2018-10-09_15-25-37.png)
+
+For the query, the difference is also that it will check if there is a pending update and if there is, then updates the node. Once it makes sure that pending update is done, it works same as the previous. So I won't go into details.
 
 Finally, I will attach the corresponding Java code.
 
