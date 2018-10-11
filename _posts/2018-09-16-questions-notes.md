@@ -870,3 +870,9 @@ int main(){
 ```
 
 ![](/assets/img/posts/questions/Snipaste_2018-09-30_21-51-11.png)
+
+![](/assets/img/posts/questions/Snipaste_2018-10-11_22-34-03.png)
+
+![](/assets/img/posts/questions/Snipaste_2018-10-11_22-34-54.png)
+
+![](/assets/img/posts/questions/Snipaste_2018-10-11_22-40-54.png)
