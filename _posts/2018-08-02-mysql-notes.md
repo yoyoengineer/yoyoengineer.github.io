@@ -275,3 +275,9 @@ ALTER TABLE hit_counter ALTER COLUMN cnt
 SET DEFAULT 5
 ```
 
+**左链接的含义**
+
+1. 以左链接为主表，返回左表里所有的行，并以此和右表连接。
+2. 即使右表没有和左表相对应的行，也需要返回null值。
+
+select指定的字段要么包含在group by语句里，要么被包含在聚合函数中。
