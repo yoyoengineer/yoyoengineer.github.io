@@ -55,3 +55,16 @@ When I'm trying to use an application, I encountered this problem (*The program 
 #### solution
 
 Download [Visual C++ Redistributable for Visual Studio 2015](https://www.microsoft.com/en-in/download/details.aspx?id=48145) from Microsoft
+
+
+
+### Cannot get the package of golang
+
+when running `go get` command,  the problem shown in the following pictures often appear.
+
+![](/assets/img/posts/problems/Snipaste_2019-01-10_18-38-15.png)
+
+#### solution
+
+![](/assets/img/posts/problems/Snipaste_2019-01-10_18-42-38.png)
+
