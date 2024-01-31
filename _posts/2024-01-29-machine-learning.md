@@ -1,9 +1,10 @@
 ---
 layout: post
-title: Machine Learning
+title: "Machine Learning"
 date: 2024-01-29 10:29:00 +0800
 featured-img: ml
 categories: ml
+summary: This a note about Machine Learning.
 ---
 
 ![](/assets/img/posts/ml/ml_0.png)
