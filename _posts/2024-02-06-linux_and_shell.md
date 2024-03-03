@@ -229,6 +229,126 @@ categories: linux_and_shell
 
 ![Snipaste_2024-03-01_15-25-06](/assets/img/posts/linux_and_shell/Snipaste_2024-03-01_15-25-06.png)
 
+## 正则表达式
+
+### 正则表达式的特殊字符（元字符）
+
+![Snipaste_2024-03-02_15-04-52](/assets/img/posts/linux_and_shell/Snipaste_2024-03-02_15-04-52.png)
+
+### 单字符正则表达式
+
+![Snipaste_2024-03-02_15-07-46](/assets/img/posts/linux_and_shell/Snipaste_2024-03-02_15-07-46.png)
+
+### 单字符正则表达式：定义集合
+
+![Snipaste_2024-03-02_15-09-26](/assets/img/posts/linux_and_shell/Snipaste_2024-03-02_15-09-26.png)
+
+![Snipaste_2024-03-02_15-14-09](/assets/img/posts/linux_and_shell/Snipaste_2024-03-02_15-14-09.png)
+
+### 单字符正则表达式的组合
+
+![Snipaste_2024-03-02_18-07-32](/assets/img/posts/linux_and_shell/Snipaste_2024-03-02_18-07-32.png)
+
+![Snipaste_2024-03-02_18-18-44](/assets/img/posts/linux_and_shell/Snipaste_2024-03-02_18-18-44.png)
+
+### 锚点：$与^
+
+![Snipaste_2024-03-02_18-09-47](/assets/img/posts/linux_and_shell/Snipaste_2024-03-02_18-09-47.png)
+
+### 正则表达式扩展
+
+![Snipaste_2024-03-02_18-13-22](/assets/img/posts/linux_and_shell/Snipaste_2024-03-02_18-13-22.png)
+
+### grep(Global regular expression print)在文件中查找字符串
+
+- 语法
+
+  `grep 模式 文件名列表`
+
+- 举例
+
+  ```shell
+  grep O_RDWR *.h
+  ps -ef | grep liang
+  ls -l / | grep '^d' | wc –l
+  grep '[0-9]*' shudu.c
+  grep '[0-9][0-9]*' shudu.c
+  ```
+
+### grep/egrep/fgrep
+
+![Snipaste_2024-03-02_18-38-27](/assets/img/posts/linux_and_shell/Snipaste_2024-03-02_18-38-27.png)
+
+### grep/fgrep/egrep选项
+
+![Snipaste_2024-03-02_18-40-25](/assets/img/posts/linux_and_shell/Snipaste_2024-03-02_18-40-25.png)
+
+例：
+
+```shell
+ls -l | grep '^d'
+```
+
+找出当前路径下的所有文件夹
+
+## sed：流编辑
+
+- 用法
+
+  **sed** '命令' 文件名列表
+  **sed** `–e` '命令1' `–e` '命令2' `–e` '命令3' 文件名列表
+  **sed** `-f` 命令文件 文件名列表
+
+- 举例
+
+  ![Snipaste_2024-03-02_22-05-18](/assets/img/posts/linux_and_shell/Snipaste_2024-03-02_22-05-18.png)
+
+## sed:正则表达式替换
+
+![Snipaste_2024-03-02_22-26-28](/assets/img/posts/linux_and_shell/Snipaste_2024-03-02_22-26-28.png)
+
+## awk：逐行扫描进行文本处理的一门语言
+
+![Snipaste_2024-03-03_17-04-46](/assets/img/posts/linux_and_shell/Snipaste_2024-03-03_17-04-46.png)
+
+## awk描述条件的方法
+
+- 使用与C语言类似的关系算符
+
+  ![Snipaste_2024-03-03_17-09-01](/assets/img/posts/linux_and_shell/Snipaste_2024-03-03_17-09-01.png)
+
+- 使用与C语言类似的逻辑算符
+
+  ![Snipaste_2024-03-03_17-10-19](/assets/img/posts/linux_and_shell/Snipaste_2024-03-03_17-10-19.png)
+
+- 正则表达式的模式匹配 /regexpr/
+
+  包含该模式的行，执行动作
+
+- 特殊的条件
+
+  1. 不指定任何条件，对所有文本行执行动作
+  2. BEGIN 开始处理所有文本行之前执行动作
+  3. END 处理完所有文本行之后执行动作
+
+## awk描述动作的方法
+
+![Snipaste_2024-03-03_17-17-26](/assets/img/posts/linux_and_shell/Snipaste_2024-03-03_17-17-26.png)
+
+![Snipaste_2024-03-03_21-53-33](/assets/img/posts/linux_and_shell/Snipaste_2024-03-03_21-53-33.png)
+
+```shell
+ps -ef | grep systemd
+# 找出含有"systemd"的行，并只打印出第2列和第8列
+ps -ef | awk '/systemd/{printf("%s %s\n", $2, $8); }'
+# 只打印出时间
+date | awk '{print $4}'
+# 为源程序前每一行加上行号，花括号左边没有加任何条件，则每一行都匹配，NR表示记录号或行号，$0表示整一行的内容
+awk '{printf("%d: %s\n",NR,$0);}' test.c
+# ls -s列出当前目录下的文件及其大小，单位为1k，现在是挑出大于80k的文件进行打印
+ls -s | tail -n +2 |  awk '$1 > 80 {print $2}'
+```
+
 ## 应用实例
 
 以下是一个生成模拟的1000条nginx访问日志，并找出访问量前十的接口的shell脚本
