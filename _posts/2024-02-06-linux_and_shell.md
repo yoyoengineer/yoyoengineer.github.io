@@ -351,27 +351,47 @@ ls -s | tail -n +2 |  awk '$1 > 80 {print $2}'
 
 ## 应用实例
 
-以下是一个生成模拟的1000条nginx访问日志，并找出访问量前十的接口的shell脚本
+1. **以下是一个生成模拟的1000条nginx访问日志，并找出访问量前十的接口的shell脚本**
 
-```shell
-#!/bin/bash
+   ```shell
+   #!/bin/bash
+   
+   # 定义日志文件的路径
+   LOG_FILE="nginx_access.log"
+   
+   # 生成模拟的Nginx访问日志
+   for i in {1..1000}; do
+       # 随机选择一个资源
+       resources=("/api/data" "/home" "/api/upload" "/login" "/user/82.png" "/login/37.php" "/data/5.jpg" "/user/5.html" "/api/48.css" "/logout/76.php" "/upload/41.html" "/upload/95.js" "/profile/41.css" "/info/94.css" "/upload/44.jpg" "/user/3.php" "/admin/7.xml" "/login/32.css" "/upload/79.css" "/upload/33.php" "/data/7.png" "/api/36.json" "/upload/23.xml" "/upload/21.jpg")
+       resource=${resources[$RANDOM % ${#resources[@]}]}
+       
+       # 生成日志条目
+       echo "192.168.0.1 - - [$(date +'%d/%b/%Y:%H:%M:%S +0000')] \"GET ${resource} HTTP/1.1\" 200 500 \"-\" \"Mozilla/5.0\"" >> $LOG_FILE
+   done
+   
+   # 分析日志，找出访问量前10的资源
+   echo "Top 10 accessed resources:"
+   awk '{print $7}' $LOG_FILE | sort | uniq -c | sort -nr | head -10
+   ```
 
-# 定义日志文件的路径
-LOG_FILE="nginx_access.log"
+   ![](/assets/img/posts/linux_and_shell/Snipaste_2024-03-01_16-33-02.png)
 
-# 生成模拟的Nginx访问日志
-for i in {1..1000}; do
-    # 随机选择一个资源
-    resources=("/api/data" "/home" "/api/upload" "/login" "/user/82.png" "/login/37.php" "/data/5.jpg" "/user/5.html" "/api/48.css" "/logout/76.php" "/upload/41.html" "/upload/95.js" "/profile/41.css" "/info/94.css" "/upload/44.jpg" "/user/3.php" "/admin/7.xml" "/login/32.css" "/upload/79.css" "/upload/33.php" "/data/7.png" "/api/36.json" "/upload/23.xml" "/upload/21.jpg")
-    resource=${resources[$RANDOM % ${#resources[@]}]}
-    
-    # 生成日志条目
-    echo "192.168.0.1 - - [$(date +'%d/%b/%Y:%H:%M:%S +0000')] \"GET ${resource} HTTP/1.1\" 200 500 \"-\" \"Mozilla/5.0\"" >> $LOG_FILE
-done
+2. **累加作品发行量**
 
-# 分析日志，找出访问量前10的资源
-echo "Top 10 accessed resources:"
-awk '{print $7}' $LOG_FILE | sort | uniq -c | sort -nr | head -10
-```
+   ![Snipaste_2024-03-04_20-29-31](/assets/img/posts/linux_and_shell/Snipaste_2024-03-04_20-29-31.png)
 
-![](/assets/img/posts/linux_and_shell/Snipaste_2024-03-01_16-33-02.png)
+   ![Snipaste_2024-03-04_21-06-08](/assets/img/posts/linux_and_shell/Snipaste_2024-03-04_21-06-08.png)
+
+   ```shell
+   sed -e 's/多//g' -e 's/.*[^0-9]\([0-9][0-9]*\) *万.*/\1/g' hh.txt | awk '/^[0-9]/{sum+=$1}; END {print sum}'
+   ```
+
+3. 求一本书中出现频率最高的20个单词
+
+   ```shell
+   # 查看单引号的八进制ASCII码值
+   echo \' | od -t o1
+   cat jane.txt | tr '[A-Z]' '[a-z]' | tr ';.?\047,():"!-' ' ' | tr ' ' '\012' | grep -v '^ *$' | sort | uniq -c | sort -n | tail -n 20
+   ```
+
+   ![Snipaste_2024-03-04_21-56-14](/assets/img/posts/linux_and_shell/Snipaste_2024-03-04_21-56-14.png)
