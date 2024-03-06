@@ -395,3 +395,129 @@ ls -s | tail -n +2 |  awk '$1 > 80 {print $2}'
    ```
 
    ![Snipaste_2024-03-04_21-56-14](/assets/img/posts/linux_and_shell/Snipaste_2024-03-04_21-56-14.png)
+
+## 常见问题
+
+1. “死机”问题
+
+   ![Snipaste_2024-03-06_20-19-20](/assets/img/posts/linux_and_shell/Snipaste_2024-03-06_20-19-20.png)
+
+   网络虚拟终端的流控
+
+   ![Snipaste_2024-03-06_20-21-46](/assets/img/posts/linux_and_shell/Snipaste_2024-03-06_20-21-46.png)
+
+2. 意外中止问题
+
+   ![Snipaste_2024-03-06_20-22-52](/assets/img/posts/linux_and_shell/Snipaste_2024-03-06_20-22-52.png)
+
+3. 退格键(Backspace)无法使用的问题
+
+   ![Snipaste_2024-03-06_20-25-11](/assets/img/posts/linux_and_shell/Snipaste_2024-03-06_20-25-11.png)
+
+4. 屏幕显示乱码问题
+
+   ![Snipaste_2024-03-06_20-28-49](/assets/img/posts/linux_and_shell/Snipaste_2024-03-06_20-28-49.png)
+
+5. 文本文件格式问题
+
+   ![Snipaste_2024-03-06_20-29-47](/assets/img/posts/linux_and_shell/Snipaste_2024-03-06_20-29-47.png)
+
+   ![Snipaste_2024-03-06_20-32-14](/assets/img/posts/linux_and_shell/Snipaste_2024-03-06_20-32-14.png)
+
+6. 中文编码问题
+
+   ![Snipaste_2024-03-06_21-08-11](/assets/img/posts/linux_and_shell/Snipaste_2024-03-06_21-08-11.png)
+
+## 目录
+
+- /etc
+
+  系统配置信息
+
+  ![Snipaste_2024-03-06_21-17-33](/assets/img/posts/linux_and_shell/Snipaste_2024-03-06_21-17-33.png)
+
+- /tmp
+
+  临时文件，每个用户都可以在这里临时创建文件，但 只能删除自己的文件，不可以删除其他用户创建的文件
+
+- /var
+
+  系统运行时要改变的数据
+
+  系统日志syslog等
+
+- /bin
+
+  系统常用命令，如ls，ln，cp，cat等
+
+- /usr/bin
+
+  存放一些常用命令，如ssh,ftp，make，gcc，git等
+
+- /sbin,/usr/sbin
+
+  系统管理员专用命令
+
+- /dev
+
+  设备文件，如终端设备，磁带机，打印机等
+
+-  /usr/include (usr=Unix System Resource）
+
+  C语言头文件存放目录
+
+- /lib,/usr/lib
+
+  ![Snipaste_2024-03-06_21-20-55](/assets/img/posts/linux_and_shell/Snipaste_2024-03-06_21-20-55.png)
+
+## 文件通配符规则
+
+**注意：** *文件名通配符规则与正则表达式的规则不同，应用场合不同*
+
+- 星号 `*`
+
+  ![Snipaste_2024-03-06_21-27-24](/assets/img/posts/linux_and_shell/Snipaste_2024-03-06_21-27-24.png)
+
+- 问号 `?`
+
+  匹配任一单字符
+
+- 方括号 `[ ]`
+
+  ![Snipaste_2024-03-06_21-28-06](/assets/img/posts/linux_and_shell/Snipaste_2024-03-06_21-28-06.png)
+
+- 波浪线 `~`
+
+  ![Snipaste_2024-03-06_21-28-47](/assets/img/posts/linux_and_shell/Snipaste_2024-03-06_21-28-47.png)
+
+## shell与kernel
+
+![Snipaste_2024-03-06_21-40-19](/assets/img/posts/linux_and_shell/Snipaste_2024-03-06_21-40-19.png)
+
+## shell文件名通配符处理
+
+文件名通配符的处理由shell完成，分以下三步
+
+1. 在shell提示符下，从键盘输入命令，被shell接受
+2. shell对所键入内容作若干加工处理，其中含有对文件通配符的展开工作 (文件名生成)，生成结果命令
+3. 执行前面生成的结果命令
+
+## 文件名通配符举例
+
+![Snipaste_2024-03-06_21-50-03](/assets/img/posts/linux_and_shell/Snipaste_2024-03-06_21-50-03.png)
+
+```c
+#include <stdio.h>
+
+int main(int argc, char *argv[])
+{
+    int i;
+    for (i = 0; i < argc; i++)
+        printf("%d:%p [%s]\n", i, argv[i], argv[i]);
+}
+```
+
+   通过该c程序可以验证上面的内容，当然通过`set -x`也可以验证上面的内容
+
+![Snipaste_2024-03-06_23-06-49](/assets/img/posts/linux_and_shell/Snipaste_2024-03-06_23-06-49.png)
+
