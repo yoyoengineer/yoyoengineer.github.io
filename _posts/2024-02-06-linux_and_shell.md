@@ -521,3 +521,132 @@ int main(int argc, char *argv[])
 
 ![Snipaste_2024-03-06_23-06-49](/assets/img/posts/linux_and_shell/Snipaste_2024-03-06_23-06-49.png)
 
+## ls选项-l: 长格式列表
+
+![Snipaste_2024-03-07_15-03-49](/assets/img/posts/linux_and_shell/Snipaste_2024-03-07_15-03-49.png)
+
+- 第1列：文件属性
+
+  ![Snipaste_2024-03-07_15-05-49](/assets/img/posts/linux_and_shell/Snipaste_2024-03-07_15-05-49.png)
+
+- 第2列：文件link数，涉及到此文件的目录项数
+
+- 第3列，第4列：文件主的名字和组名
+
+- 第5列
+
+  ![image-20240307150638941](C:\Users\dell\AppData\Roaming\Typora\typora-user-images\image-20240307150638941.png)
+
+- 第6列：文件最后一次被修改的日期和时间
+
+- 第7列：文件名(对于符号连接文件，附带列出符号连接文件的内容)
+
+## ls的其他选项
+
+![Snipaste_2024-03-07_15-09-20](/assets/img/posts/linux_and_shell/Snipaste_2024-03-07_15-09-20.png)
+
+![Snipaste_2024-03-07_15-12-20](/assets/img/posts/linux_and_shell/Snipaste_2024-03-07_15-12-20.png)
+
+## cp: 拷贝文件
+
+![Snipaste_2024-03-07_15-22-39](/assets/img/posts/linux_and_shell/Snipaste_2024-03-07_15-22-39.png)
+
+![Snipaste_2024-03-07_15-24-56](/assets/img/posts/linux_and_shell/Snipaste_2024-03-07_15-24-56.png)
+
+## mv: 移动文件
+
+![Snipaste_2024-03-07_16-15-18](/assets/img/posts/linux_and_shell/Snipaste_2024-03-07_16-15-18.png)
+
+## rm: 删除文件
+
+![Snipaste_2024-03-07_16-21-29](/assets/img/posts/linux_and_shell/Snipaste_2024-03-07_16-21-29.png)
+
+![Snipaste_2024-03-07_16-22-28](/assets/img/posts/linux_and_shell/Snipaste_2024-03-07_16-22-28.png)
+
+![Snipaste_2024-03-07_16-23-19](/assets/img/posts/linux_and_shell/Snipaste_2024-03-07_16-23-19.png)
+
+当创建了一个名为"-i"的文件之后，执行`rm -i`是无法删除文件的，需要使用`rm -- -i`。
+
+**注意：**cd是shell的一个内部命令，cd命令之后未给出任何参数，在DOS中,打印出当前工作目录;而在UNIX中,默认回到用户的主目录。
+
+有必要在这里介绍一下“内部命令”和“外部命令”的概念，这里的内部和外部是相对于shell来说的。使用过DOS的用户都 熟悉“内部命令”和“外部命令”，例如：DIR，COPY，DEL等命令是内部命令，不需要磁盘上有一个类似DIR.COM或者DIR.EXE的程序文件，就可以直接执行DIR命令，而 XCOPY就是一个外部命令，必须在搜索路径PATH列出的某个子目录中有XCOPY.EXE文 件，才能执行。所谓的内部命令，就是输入了命令之后，直接由shell“内部”来理解的命令，不需要到系统中搜寻可执行程序文件。有的命令必须设计成内部命令，比如cd命令和umask命令都是内部命令。诸如ls，cp，rm等命令，在UNIX中都是外部命令。既然“内部命令”是由shell解释的，那么，内部命令与具体的shell相关， 不同的shell支持不同的内部命令集。外部命令没有这样的限制。有的shell为了提高执行效率，会把一些外部命令实现为同等语义的内部命令。例如：test，echo原来都是外部命令，许多shell把它们实现为内部命令。
+
+## 创建/删除目录
+
+![Snipaste_2024-03-07_22-24-29](/assets/img/posts/linux_and_shell/Snipaste_2024-03-07_22-24-29.png)
+
+## cp: 复制目录
+
+![Snipaste_2024-03-07_22-26-08](/assets/img/posts/linux_and_shell/Snipaste_2024-03-07_22-26-08.png)
+
+![Snipaste_2024-03-08_17-15-51](/assets/img/posts/linux_and_shell/Snipaste_2024-03-08_17-15-51.png)
+
+## rsync:数据备份工具（增量拷贝工具）
+
+![Snipaste_2024-03-08_17-18-24](/assets/img/posts/linux_and_shell/Snipaste_2024-03-08_17-18-24.png)
+
+## find:遍历目录树
+
+![Snipaste_2024-03-08_17-22-18](/assets/img/posts/linux_and_shell/Snipaste_2024-03-08_17-22-18.png)
+
+## find关于条件的选项
+
+![Snipaste_2024-03-08_17-23-24](/assets/img/posts/linux_and_shell/Snipaste_2024-03-08_17-23-24.png)
+
+![Snipaste_2024-03-08_17-24-12](/assets/img/posts/linux_and_shell/Snipaste_2024-03-08_17-24-12.png)
+
+## find关于动作的选项
+
+`-print`
+
+打印查找的文件的路径名
+
+`-exec`
+
+- 对查找到的目标执行某一命令
+
+- 在-exec及随后的分号之间的内容作为一条命令 在这命令的命令参数中，{}代表遍历到的目标文件的路径名
+
+`-ok`
+
+与-exec类似，只是对查找到符合条件的目标执行一个命令前需要经过操作员确认
+
+## find使用举例
+
+![Snipaste_2024-03-08_17-30-01](/assets/img/posts/linux_and_shell/Snipaste_2024-03-08_17-30-01.png)
+
+![Snipaste_2024-03-08_17-30-34](/assets/img/posts/linux_and_shell/Snipaste_2024-03-08_17-30-34.png)
+
+![Snipaste_2024-03-08_17-30-58](/assets/img/posts/linux_and_shell/Snipaste_2024-03-08_17-30-58.png)
+
+```shell
+find /lib /usr -name 'libc*.so' -exec ls -lh {} \;
+```
+
+- `-exec`及随后的分号之间的内容作为一条命令执行
+- shell中分号有特殊含义，前面加反斜线`\`
+- `{}`代表遍历时所查到的符合条件的路径名。注意，两花括号间无空格，之后的空格不可省略
+
+-ok选项在执行指定的命令前等待用户确认
+
+```shell
+find ~ -size +100k \( -name core -o -name ‘*.tmp’ \) -ok rm {} \;
+```
+
+![Snipaste_2024-03-08_17-36-29](/assets/img/posts/linux_and_shell/Snipaste_2024-03-08_17-36-29.png)
+
+加`/dev/null`是因为grep命令的特点，查找对象只有一个文件时，只列出行号，所以加一个`/dev/null`让grep认为有两个文件，从而使得grep打印的时候可以不仅打印出行号，同时打印出文件名。
+
+## 问题
+
+![Snipaste_2024-03-08_19-55-57](/assets/img/posts/linux_and_shell/Snipaste_2024-03-08_19-55-57.png)
+
+## 利用find与xargs的组合
+
+![Snipaste_2024-03-08_19-58-18](/assets/img/posts/linux_and_shell/Snipaste_2024-03-08_19-58-18.png)
+
+## xargs
+
+![Snipaste_2024-03-08_21-30-22](/assets/img/posts/linux_and_shell/Snipaste_2024-03-08_21-30-22.png)
+
+![Snipaste_2024-03-08_21-31-10](/assets/img/posts/linux_and_shell/Snipaste_2024-03-08_21-31-10.png)
