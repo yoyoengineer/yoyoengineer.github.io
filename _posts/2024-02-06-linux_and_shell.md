@@ -535,7 +535,7 @@ int main(int argc, char *argv[])
 
 - 第5列
 
-  ![image-20240307150638941](C:\Users\dell\AppData\Roaming\Typora\typora-user-images\image-20240307150638941.png)
+  ![image-20240307150638941](/assets/img/posts/linux_and_shell/image-20240307150638941.png)
 
 - 第6列：文件最后一次被修改的日期和时间
 
